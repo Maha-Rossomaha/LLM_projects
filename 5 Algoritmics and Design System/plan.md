@@ -9,6 +9,7 @@
 **Что уметь:** объяснять trade-off между длиной последовательности, размером модели и латентностью; выбирать уровни адаптации (Adapter/LoRA слои) для retrieval; профилировать inference (torch.profiler, nvtx).  
 **Интервью:** “почему Transformer быстрее RNN”, “как уменьшить квадратичную сложность”, “где узкие места при inference”.
 
+
 ## 2. Embeddings и взаимодействие (Early vs Late Interaction)
 **Что знать:** bi-encoder (независимое кодирование), cross-encoder (совместное кодирование пары), late interaction (ColBERT: токеновые матрицы + MaxSim агрегирование); компромиссы качество/стоимость/память; влияние размерности и нормализации.  
 **Что уметь:** проектировать многоступенчатый стек: (a) дешевый ANN на плотных эмбеддингах → (b) late interaction reranker → (c) узкий cross-encoder для top‑N; выбирать k на этапах.  
@@ -152,3 +153,86 @@
 
 **Дальше** могу подготовить чеклист “proof-of-skill” проектов (репозитории / ноутбуки), или экспортнуть этот файл в PDF. Скажи, что нужно следующим шагом.
 
+
+## Ресурсы
+
+### 1. Трансформеры и представления
+- [Attention Is All You Need (Vaswani et al., 2017)](https://arxiv.org/abs/1706.03762) citeturn0search0
+- [Rotary Position Embedding (RoPE)](https://arxiv.org/abs/2104.09864) citeturn0search1
+- [ALiBi: Attention with Linear Biases](https://arxiv.org/abs/2208.08988) citeturn0search2
+
+### 2. Embeddings и взаимодействие
+- [ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction](https://arxiv.org/abs/2004.12832) citeturn0search3
+
+### 3. Лексический сигнал + гибрид
+- [The Probabilistic Relevance Framework: BM25 and Beyond](https://www.staff.city.ac.uk/~sbrp622/papers/foundations_bm25_review.pdf) citeturn0search4
+- [Practical BM25 — Part 2: The BM25 Algorithm and its Variables](https://www.elastic.co/blog/practical-bm25-part-2-the-bm25-algorithm-and-its-variables) citeturn0search5
+
+### 4. Approximate Nearest Neighbor (ANN)
+- [Faiss: A library for efficient similarity search](https://github.com/facebookresearch/faiss) citeturn0search6
+
+### 5. Vector DB & распределённость
+- [pgvector: Open-source vector similarity search for Postgres](https://github.com/pgvector/pgvector) citeturn0search7
+
+### 6. Индексация, обновления и Embedding Lifecycle
+- [Shift happens: 5 methods to detect drift in ML embeddings](https://www.evidentlyai.com/blog/embedding-drift-detection) citeturn1search0
+
+### 7. Дедупликация и качество корпуса
+- [MinHash](https://en.wikipedia.org/wiki/MinHash) citeturn2search0
+- [SimHash](https://en.wikipedia.org/wiki/SimHash) citeturn3search0
+
+### 8. Retrieval → Reranking каскад
+- [Rerankers and Two-Stage Retrieval](https://www.pinecone.io/learn/series/rag/rerankers/) citeturn19search3
+
+### 9. Рерэнкеры: Cross-Encoder vs Late Interaction
+- [A Deep Look into Neural Ranking Models for Information Retrieval](https://arxiv.org/abs/1903.06902) citeturn4academia10
+
+### 10. Метрики и оценка (офлайн/онлайн)
+- [Discounted Cumulative Gain (DCG) & nDCG](https://en.wikipedia.org/wiki/Discounted_cumulative_gain) citeturn13search0
+- [Bootstrap confidence intervals in IR](https://www.fiddler.ai/blog/measuring-data-drift-population-stability-index) citeturn14search1
+
+### 11. Латентность и оптимизация inference
+- [PyTorch Quantization Tutorial](https://pytorch.org/docs/stable/quantization.html) citeturn6search0
+
+### 12. Кэширование и память
+- [OpenSearch Hybrid Search Caching](https://opensearch.org/docs/latest/search-plugins/knn/) citeturn8search1
+
+### 13. Масштабирование и распределённый дизайн
+- [K-way merge algorithm](https://en.wikipedia.org/wiki/K-way_merge_algorithm) citeturn20search0
+
+### 14. Data Freshness & Consistency
+- [Elasticsearch Alias Switch](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-aliases.html) citeturn9search1
+
+### 15. Версионирование моделей
+- [Shadow Deployment Patterns (Google Cloud)](https://cloud.google.com/architecture/shadow-deployment-ml) citeturn10search0
+
+### 16. Обогащение признаков и Feature Store
+- [Arize AI Feature Store](https://arize.com/blog-course/feature-store/) citeturn11search0
+
+### 17. Управление полнотекстовыми и векторными сигналами
+- [Reciprocal Rank Fusion (RRF)](https://arxiv.org/abs/2210.11934) citeturn12academia11
+
+### 18. Специфика RAG
+- [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401) citeturn13search0
+- [RAG Wikipedia](https://en.wikipedia.org/wiki/Retrieval-augmented_generation) citeturn13search13
+
+### 19. Алгоритмическая корректность и деградация
+- [Population Stability Index (PSI)](https://www.nannyml.com/blog/population-stability-index-psi) citeturn14search0
+- [Kullback–Leibler divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence) citeturn15search0
+
+### 20. Надёжность и отказоустойчивость
+- [Netflix Simian Army](https://techblog.netflix.com/2011/07/netflix-simian-army.html) citeturn16search1
+
+### 21. Производственный контроль и логирование
+- [Distributed tracing with OpenTelemetry Collector](https://opensearch.org/blog/distributed-tracing-pipeline-with-opentelemetry/) citeturn17search0
+
+### 22. Security / Privacy
+- [Embedding Attacks Project](https://arxiv.org/html/2401.13854) citeturn18search0
+- [Mitigating Privacy Risks in LLM Embeddings (Eguard)](https://arxiv.org/html/2411.05034) citeturn18search1
+
+### 23. Типовые интервью-задачи
+- [K-way merge algorithm](https://en.wikipedia.org/wiki/K-way_merge_algorithm) citeturn20search0
+- [rank_bm25 Python library](https://github.com/dorianbrown/rank_bm25) citeturn21search0
+
+### 24. Roadmap (10 недель)
+- [Fast.ai courses](https://www.fast.ai/) — курсы по дип- и машинному обучению
