@@ -5,13 +5,22 @@
 
 - Принцип работы Transformer: attention, encoder/decoder схемы  
   🔗 https://jalammar.github.io/illustrated-transformer/  
-  🔗 https://sebastianraschka.com/blog/2023/transformer-math.html
+  🔗 https://sebastianraschka.com/blog/2023/self-attention-from-scratch.html
+  🔗 https://arxiv.org/pdf/1706.03762
 
 - Архитектуры: BERT, GPT, T5, LLaMA, Mistral, Claude, Gemini и т.п.  
-  🔗 https://huggingface.co/docs/transformers/model_doc/auto
+  🔗 https://huggingface.co/blog/bert-101
+  🔗 https://dugas.ch/artificial_curiosity/GPT_architecture.html
+  🔗 https://medium.com/%40gagangupta_82781/understanding-the-t5-model-a-comprehensive-guide-b4d5c02c234b
+  🔗 https://ai.meta.com/blog/meta-llama-3-1/
+  🔗 https://medium.com/dair-ai/papers-explained-mistral-7b-b9632dedf580
+  🔗 https://docs.anthropic.com/en/docs/about-claude/models/overview
+  🔗 https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024
 
 - Отличия: causal vs masked LM, decoder-only vs encoder-decoder  
   🔗 https://huggingface.co/course/chapter1
+  🔗 https://medium.com/%40tom_21755/understanding-causal-llms-masked-llm-s-and-seq2seq-a-guide-to-language-model-training-d4457bbd07fa
+  🔗 https://huggingface.co/docs/transformers/en/tasks/language_modeling
 
 - Устройство токенизации (BPE, SentencePiece)  
   🔗 https://huggingface.co/course/chapter6  
