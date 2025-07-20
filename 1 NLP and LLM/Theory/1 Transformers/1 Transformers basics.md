@@ -1,6 +1,7 @@
 # Формальное изложение механизма Transformer
 
-URL: https://jalammar.github.io/illustrated-transformer/
+URL:   
+🔗 [Transformers illustrated](https://jalammar.github.io/illustrated-transformer/) 
 
 ## 1. Входные эмбеддинги и проекции Q, K, V
 

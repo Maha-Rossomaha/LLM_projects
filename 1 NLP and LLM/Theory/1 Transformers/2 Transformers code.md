@@ -1,7 +1,7 @@
 # Конспект «Self-Attention from Scratch» (Sebastian Raschka, 2023)
 
-URL: https://sebastianraschka.com/blog/2023/self-attention-from-scratch.html
-
+URL:  
+🔗 [Transformers code](https://sebastianraschka.com/blog/2023/self-attention-from-scratch.html)
 ## 1. Ментальная модель Self-Attention
 
 1. **Входные эмбеддинги**  

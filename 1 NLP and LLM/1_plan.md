@@ -10,12 +10,13 @@
   🔗 [Mixture of Experts Explained](https://huggingface.co/blog/moe)  
   🔗 [A Visual Guide to MoE](https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-mixture-of-experts)  
   🔗 [Understanding Mixture of Experts: Building a MoE Model with PyTorch](https://medium.com/@prateeksikdar/understanding-mixture-of-experts-building-a-moe-model-with-pytorch-dd373d9db81c)
+
 - Архитектуры: BERT, GPT, T5, LLaMA, Mistral, Claude, Gemini и т.п.  
   🔗 [BERT](https://huggingface.co/blog/bert-101)  
   🔗 [GPT-3](https://dugas.ch/artificial_curiosity/GPT_architecture.html)  
   🔗 [T5](https://medium.com/40gagangupta_82781understanding-the-t5-model-a-comprehensive-guide-b4d5c02c234b)  
-  🔗 [LLama3_1](https://ai.meta.com/blog/meta-llama-3-1/)  
-  🔗 [LLama4_1](https://ai.meta.com/blog/llama-4-multimodal-intelligence/)  
+  🔗 [LLama3-1](https://ai.meta.com/blog/meta-llama-3-1/)  
+  🔗 [LLama4-1](https://ai.meta.com/blog/llama-4-multimodal-intelligence/)  
   🔗 [Mistral 7b](https://medium.com/dair-ai/papers-explained-mistral-7b-b9632dedf580)  
   🔗 https://docs.anthropic.com/en/docs/about-claude/models/overview  
   🔗 [Gemini](https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024)  

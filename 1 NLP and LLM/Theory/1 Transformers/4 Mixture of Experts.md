@@ -3,6 +3,7 @@ URL:
 🔗 [Mixture of Experts Explained](https://huggingface.co/blog/moe)  
 🔗 [A Visual Guide to MoE](https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-mixture-of-experts)  
 🔗 [Understanding Mixture of Experts: Building a MoE Model with PyTorch](https://medium.com/@prateeksikdar/understanding-mixture-of-experts-building-a-moe-model-with-pytorch-dd373d9db81c)
+
 > **Коротко:** MoE — это способ «разреженного» масштабирования трансформеров: каждый токен проходит через небольшой под‑набор *экспертов* (специализированных FFN‑веток), выбранных *роутером*. Благодаря этому активных параметров — всего 10–20 % от общего числа, что даёт почти линейную экономию FLOP без ухудшения качества.  
 
 ---

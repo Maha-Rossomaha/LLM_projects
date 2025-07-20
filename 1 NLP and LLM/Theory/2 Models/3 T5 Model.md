@@ -1,10 +1,7 @@
 # T5 Model 
 
----
-
-URL: [https://medium.com/@gagangupta_82781/understanding-the-t5-model-a-comprehensive-guide-b4d5c02c234b](https://medium.com/@gagangupta_82781/understanding-the-t5-model-a-comprehensive-guide-b4d5c02c234b)
-
-
+URL:  
+🔗 [T5 Model](https://medium.com/40gagangupta_82781understanding-the-t5-model-a-comprehensive-guide-b4d5c02c234b)
 
 ## 1 Введение и научный контекст
 
