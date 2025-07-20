@@ -18,9 +18,8 @@
   🔗 [LLama3-1](https://ai.meta.com/blog/meta-llama-3-1/)  
   🔗 [LLama4-1](https://ai.meta.com/blog/llama-4-multimodal-intelligence/)  
   🔗 [Mistral 7b](https://medium.com/dair-ai/papers-explained-mistral-7b-b9632dedf580)  
-  🔗 [Mixtral 8x7B](https://mistral.ai/news/mixtral-of-experts)
-  🔗 https://docs.anthropic.com/en/docs/about-claude/models/overview  
-  🔗 [Gemini](https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024)  
+  🔗 [Mixtral 8x7B](https://mistral.ai/news/mixtral-of-experts)  
+  🔗 [Gemini 2.5](https://arxiv.org/pdf/2507.06261)  
 
 - Отличия: causal vs masked LM, decoder-only vs encoder-decoder  
   🔗 https://huggingface.co/course/chapter1  
