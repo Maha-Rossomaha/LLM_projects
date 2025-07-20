@@ -1,188 +1,103 @@
-# Production & MLOps для LLM, Поиска и Рекомендательных Систем
+# План компетенций: Production & MLOps для LLM‑сервисов (Search / RecSys)
 
-## 1. Контейнеризация и оркестрация
-
-**Необходимые навыки:**
-- Docker: сборка production-образов для LLM-сервисов (с GPU, CUDA, Python env).
-- docker-compose: dev/test окружения.
-- Kubernetes:
-  - Deployment моделей (retriever, reranker, API).
-  - Helm charts, autoscaling (в т.ч. GPU).
-  - Resource limits, rollout, blue-green/canary деплой.
-
-**Что изучить:**
-- dockerfile best practices
-- helm, kubectl, GPU scheduling
-- K8s secrets, configMaps
-- [Docker best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
-- [Kubernetes basics (официальный гайд)](https://kubernetes.io/docs/tutorials/kubernetes-basics/)
-- [Helm Getting Started](https://helm.sh/docs/intro/quickstart/)
-- [GPU scheduling в K8s](https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/)
+> **Фокус:** эксплуатация и сопровождение LLM‑моделей (retriever, reranker, генератор) в продакшне: контейнеры, CI/CD, низколатентный inference, мониторинг, безопасность. Алгоритмы retrieval и хранилища вынесены в отдельные планы.
 
 ---
 
-## 2. CI/CD пайплайны
+## I. Контейнеризация и оркестрация
+- **Docker:** многостейджевые Dockerfile, CUDA‑базовые образы, тонкие runtime‑образы (distroless, slim).
+- **docker‑compose:** dev / test окружения, GPU‑override.
+- **Kubernetes + Helm:** GPU scheduling, resource limits, auto‑scaling (HPA / KEDA), blue‑green / canary rollout, secrets + configMaps.
 
-**Необходимые навыки:**
-- GitHub Actions / GitLab CI / Jenkins / Argo:
-  - автоматическая сборка docker-образов
-  - прогон тестов и валидации моделей
-  - деплой в облако или локальную инфраструктуру
-- Проверка схем, метрик, bias (в CI)
+## II. CI/CD и Infrastructure‑as‑Code
+- **CI платформы:** GitHub Actions / GitLab CI / Jenkins / Argo — build → test → scan → push → deploy.
+- **Model Registry:** MLflow Registry, SageMaker Model Registry — semver, promotion rules, rollback.
+- **IaC:** Terraform / Pulumi для VPC, GPU nodes, LB; policy as code, drift detection.
+- **Quality gates:** unit + integration + e2e тесты; метрики (MRR, latency) в pipeline.
+- **Deploy‑паттерны:** blue‑green, canary, shadow, feature‑flags.
 
-**Что изучить:**
-- CI для моделей и inference-сервисов
-- rollback-стратегии, multi-env CD
-- [GitHub Actions для ML](https://mlops.community/github-actions-for-mlops/)
-- [CI/CD for Machine Learning](https://mlops.community/mlops-cicd/)
-- [Argo Workflows — Kubernetes-native pipelines](https://argoproj.github.io/argo-workflows/)
+## III. Низко‑латентный inference и оптимизация
+- **Inference движки:** vLLM, text‑generation‑inference, Triton, DeepSpeed‑MII.
+- **Оптимизации модели:** KV‑кэш, FlashAttention‑2, quantization (INT8/4, GPTQ), continuous batching, speculative decoding.
+- **Скалирование:** Tensor / Pipeline MP (DeepSpeed, Megatron), multi‑GPU NCCL, FP8 pilot.
+- **Автоскейл нагрузок:** FastAPI batch endpoints, concurrency gate, dynamic batch‑size.
+- **Cost‑control:** GPU spot, heterogeneous fleet, scale‑to‑zero.
 
----
+## IV. Облачные и on‑prem платформы
+- **AWS SageMaker / Bedrock, GCP Vertex AI, Azure ML:** endpoints, multi‑model endpoints, traffic‑splitting.
+- **KServe / KFServing:** serverless модели в кластере.
+- **HF Inference Endpoints** для хостинга retriever/LLM.
 
-## 3. Облачные платформы и inference
+## V. Мониторинг и observability
+- **Сервисные метрики:** p50/p95 latency, throughput, GPU util, memory, error rate, токены / сек.
+- **Качественные метрики:** MRR, nDCG, drift (PSI/KL), hallucination‑rate.
+- **Стек:** Prometheus + Grafana, OpenTelemetry traces (Jaeger), Sentry alerts.
+- **Алёртинг:** SLO burn‑rate, anomaly detection on metrics.
 
-**Необходимые навыки:**
-- AWS SageMaker: train job, endpoint, multi-model endpoint.
-- Bedrock: вызов моделей (Claude, Titan).
-- GCP Vertex AI, Azure ML (желательно).
-- FastAPI/gRPC inference endpoints.
-- text-generation-inference / vLLM / Triton Inference Server.
+## VI. Логирование и трассировка
+- **Structured logs:** structlog / loguru, JSON формат, TraceID / SpanID.
+- **Log storage:** Loki, Elastic Stack, Cloud Logging.
+- **Tracing:** context propagation (FastAPI middleware, gRPC interceptors).
 
-**Что изучить:**
-- SageMaker SDK, vLLM API
-- Деплой кастомных моделей с автоскейлом
-- [Deploy models with SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html)
-- [vLLM — fast inference for LLMs](https://github.com/vllm-project/vllm)
-- [text-generation-inference (Hugging Face)](https://github.com/huggingface/text-generation-inference)
-- [Triton Inference Server](https://github.com/triton-inference-server/server)
+## VII. Валидация и тестирование
+- **Тесты:** pytest unit, integration, load (Gatling / Locust), robustness (prompt mutations).
+- **Schema checks:** Pydantic, OpenAPI contract.
+- **Continuous evaluation:** DeepChecks / Evidently ML; regression guardrails.
 
----
+## VIII. A/B‑тестирование и rollout
+- Traffic splitting: header‑hash, user‑id bucketing, dynamic routing.
+- Метрики uplift, sequential testing, CUPED, Bayesian bandits.
+- Shadow deploy, champion/challenger, feature‑flags.
 
-## 4. Monitoring, observability, logging
+## IX. Batch и streaming inference
+- **Batch:** Airflow / Prefect — CSV/Parquet → model → S3/Table.
+- **Streaming:** Kafka / Redis Streams → inference worker → sink.
+- **Hot‑swap:** переключение real‑time ↔ batch без достоев.
 
-**🔧 Необходимые навыки:**
-- Метрики: latency, throughput, GPU util, model quality (CTR, Gini, NDCG).
-- Drift detection по embedding, token dist, user segments.
-- Prometheus + Grafana: мониторинг.
-- OpenTelemetry / Jaeger: трассировка.
+## X. Feature Store и артефакты
+- **Feature Store:** Feast, Hopsworks, dbt‑metrics — online ↔ offline parity.
+- **Артефакты:** MLflow, DVC, Weights & Biases — versioning моделей, эмбеддингов, данных.
+- **Data lineage & governance:** tags, model cards, datasheets.
 
-**📚 Что изучить:**
-- Метрики inference latency
-- Интеграция FastAPI ↔ Prometheus
-- [Prometheus + FastAPI integration](https://github.com/stephenhillier/prometheus-fastapi-instrumentator)
-- [Grafana Dashboards для ML](https://grafana.com/grafana/dashboards/)
-- [OpenTelemetry для Python](https://opentelemetry.io/docs/instrumentation/python/)
+## XI. Безопасность и приватность
+- **Auth & AuthZ:** OAuth2, service tokens, scope‑based ACL.
+- **Rate‑limiting / WAF:** abuse‑detection, IP‑reputation, captcha‑flows.
+- **Prompt safety:** prompt‑injection filters, jailbreak detection, output sandboxing.
+- **PII masking & encryption:** at‑rest (EBS/KMS) & in‑transit (TLS), field‑level crypto.
+- **Compliance:** SOC‑2, ISO‑27001, GDPR (DSAR, RTBF), HIPAA.
 
----
+## XII. FinOps и cost‑monitoring
+- **Метрики стоимости:** GPU‑hours, $/M tokens, utilization heatmaps.
+- **Budget alerts:** dynamic thresholds, forecast anomalies.
+- **Rightsizing:** GPU bin‑packing, spot diversity, idle‑scale‑down.
+- **Chargeback & showback:** per‑team tagging, cost‑reports (FinOps dashboards).
 
-## 5. Логирование и трассировка
+## XIII. Чеклист типовых задач
+| Сценарий | Ключевые шаги / навыки |
+|---|---|
+| Вкат retriever на GPU | Docker → CI/CD → Helm chart → HPA |
+| Снизить p95 latency на 30 % | KV‑кэш, FlashAttention‑2, quantization, batching |
+| Drift‑мониторинг | embed sampling → PSI/KL → Prometheus alert |
+| A/B двух версий | traffic split → Metrics store → uplift analysis |
+| Re‑index без даунтайма | batch infer → shadow index → alias switch |
+| Anti‑abuse | rate‑limit middleware → JWT scope check |
 
-**Необходимые навыки:**
-- Структурированные логи: structlog, loguru, logger.exception.
-- TraceID, RequestID через все сервисы.
-- Хранение логов: ELK, Loki, Cloud Logging.
-
-**Что изучить:**
-- Прокси логов из FastAPI
-- Trace context propagation
-- [Structlog documentation](https://www.structlog.org/en/stable/)
-- [Loguru: Python logging made (stupidly) simple](https://github.com/Delgan/loguru)
-- [OpenTelemetry Logging](https://opentelemetry.io/docs/specs/otel/logs/overview/)
-
----
-
-## 6. Автоматизация валидации и тестирования
-
-**Необходимые навыки:**
-- Юнит/интеграционные тесты: pytest + FastAPI.
-- Проверка метрик моделей.
-- Контроль схем (Pydantic).
-- Robustness тесты: переформулировки промптов.
-
-**Что изучить:**
-- Test coverage для LLM-инференса
-- Pydantic schema enforcement
-- [Testing ML Systems](https://madewithml.com/courses/mlops/testing/)
-- [Pytest + FastAPI examples](https://fastapi.tiangolo.com/tutorial/testing/)
-- [Deepchecks: ML validation framework](https://github.com/deepchecks/deepchecks)
-
----
-
-## 7. A/B-тестирование моделей
-
-**Необходимые навыки:**
-- Параллельный деплой двух моделей (routing по user_id).
-- Метрики: uplift, CTR, latency.
-- Анализ логов, визуализация.
-
-**Что изучить:**
-- AB-инфраструктура FastAPI + логгинг
-- A/B evaluation pipeline
-- [AB Testing for ML Models — MLOps Guide](https://mlops.community/ab-testing/)
-- [Feature toggles / split traffic](https://launchdarkly.com/blog/feature-flags-ab-testing/)
-- [MLOps A/B testing with FastAPI](https://towardsdatascience.com/a-b-testing-in-machine-learning-d3b8e8f4de3c)
+## XIV. Ресурсы
+- **Dockerfile best practices** — docs.docker.com.
+- **Helm quickstart** — helm.sh/docs.
+- **Terraform Cloud** — developer.hashicorp.com.
+- **vLLM** — github.com/vllm‑project/vllm.
+- **Triton Inference Server** — NVIDIA repo.
+- **DeepSpeed‑MII** — deepspeed.ai.
+- **Prometheus FastAPI Instrumentator** — GitHub.
+- **OpenTelemetry Python** — opentelemetry.io.
+- **Evidently AI drift monitor** — docs.evidentlyai.com.
+- **LaunchDarkly Feature Flags** — launchdarkly.com.
+- **Feast Feature Store** — feast.dev.
+- **MLflow Tracking** — mlflow.org.
+- **FinOps Foundation Guides** — finops.org.
 
 ---
 
-## 8. Batch / streaming inference
+**Краткое резюме:** файл охватывает полный MLOps‑цикл LLM‑сервиса: контейнеризация, IaC + CI/CD, опт‑драйверы latency, мониторинг, A/B, FinOps и безопасность. Дубликаты с другими планами устранены; недостающие темы (IaC, Model Registry, FinOps, prompt safety) добавлены.
 
-**Необходимые навыки:**
-- Batch inference: cron, Airflow, CSV → embeddings → save.
-- Streaming: Kafka/Redis → модель → хранилище.
-- Умение переключаться между batch / online пайплайнами.
-
-**Что изучить:**
-- Airflow DAGs
-- Streaming inference server
-- [Batch inference with Airflow](https://blog.roboflow.com/batch-inference-airflow/)
-- [Streaming ML with Kafka](https://developer.confluent.io/learn/kafka-streams/)
-- [Redis Streams + LLM](https://redis.com/blog/real-time-stream-processing-llm/)
-
----
-
-## 9. Feature Store и управление артефактами
-
-**Необходимые навыки:**
-- Feature Store (Feast, dbt, custom): хранение признаков.
-- MLflow / DVC / S3: модели, эмбеддинги, скрипты.
-
-**Что изучить:**
-- Версионирование артефактов
-- MLflow Registry API
-- [Feast — open-source Feature Store](https://feast.dev/)
-- [MLflow Tracking and Registry](https://mlflow.org/docs/latest/tracking.html)
-- [DVC for ML pipelines](https://dvc.org/doc/start)
-
----
-
-## 10. Безопасность и приватность
-
-**Необходимые навыки:**
-- Ограничение доступа к LLM endpoints.
-- Обфускация PII, маскирование.
-- Rate limiting, abuse protection.
-- Аудит, compliance (SOC2, ISO, GDPR-ready).
-
-**Что изучить:**
-- OpenAPI tokens + access scopes
-- Privacy filters для текстов/логов
-- [OWASP ML Security Top 10](https://owasp.org/www-project-machine-learning-security-top-10/)
-- [Ethical AI checklist (Google)](https://pair-code.github.io/ethicalml/)
-- [GDPR for ML Systems](https://gdpr.eu/)
-  
----
-
-## 11. Частые задачи и навыки
-
-| Задача | Навыки |
-|-------|--------|
-| Выкатить retriever | Docker, CI/CD, latency тесты |
-| Проверить деградацию | Тесты метрик, drift |
-| Внедрить quantized reranker | Quantization, latency tests |
-| Настроить мониторинг | Prometheus, middlewares |
-| A/B-тест retrievers | Routing, uplift анализ |
-| Поднять vLLM | CUDA, API gateway |
-| Обновить эмбеддинги | Batch infer, cron, Airflow |
-| Обработка 10M запросов | Async inference, batching |
-
----

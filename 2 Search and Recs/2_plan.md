@@ -1,177 +1,74 @@
-# Системы рекомендаций и поиск — Полный набор требований (Senior LLM)
+# План компетенций: Системы поиска и рекомендаций (Senior LLM)
 
-## Retrieval (извлечение релевантных кандидатов)
-
-### Что ты должен уметь:
-- Semantic search (sentence-transformers, OpenAI, MTEB).
-- Dense retrieval: FAISS, pgvector, Milvus, Qdrant, Weaviate.
-- Hybrid search: BM25 + dense, fusion методов.
-- Semantic IDs: dense hashing, quantization.
-- Asymmetric search (query ≠ doc) — ColBERT, Twin-Tower.
-
-### Знания:
-- Tokenization, embedding space, triplet loss, similarity metrics (cosine, dot, IP).
-- Архитектуры: Siamese, Dual Encoder, ColBERT, Sparse-Dense fusion.
-
-### Ресурсы:
-- [MTEB benchmark](https://huggingface.co/spaces/mteb/leaderboard) — для оценки моделей.
-- [FAISS tutorial (Facebook)](https://github.com/facebookresearch/faiss/wiki) — официальное руководство.
-- [ColBERTv2 (Stanford)](https://github.com/stanford-futuredata/ColBERT) — продвинутый dense retrieval.
-- [Qdrant Docs](https://qdrant.tech/documentation/) — API и концепции production vector search.
+> **Фокус:** навыки построения полноценных поисково‑рекомендательных систем на базе LLM‑retriever‑стека. Темы инфраструктуры, CI/CD и хранилищ рассматриваются отдельно.
 
 ---
 
-## Reranking
+## I. Retrieval‑стек
+- **Dense поиск:** Sentence‑Transformers, E5, BGE, DistilUSE; настройка размерности, pooling, L2‑нормализации.  
+- **Sparse сигнатуры:** BM25, SPLADE, pruning stop‑words, lexical fallback.  
+- **Hybrid fusion:** Reciprocal Rank Fusion (RRF), формула $w_{lex}·BM25 + w_{dense}·\cos$.  
+- **ANN индексация:** IVF‑PQ (`nlist`, `nprobe`, PQ M/бит) и HNSW (`ef`, `M`), ScaNN, multi‑shard.  
+- **Качество корпуса:** дедуп (MinHash/SimHash), сегментация длинных документов (sliding window, text splitting).
 
-### Что ты должен уметь:
-- Cross-encoder (bge-reranker, ms-marco).
-- Cascade / multi-stage ranking.
-- Feature engineering для LTR.
-- Loss-функции: RankNet, LambdaMART, ListNet.
+## II. Каскад reranking
+- **Late‑interaction** (ColBERT) vs **Cross‑encoder** (bge‑reranker) — trade‑off latency ↔ quality.  
+- Мульти‑этап: bi‑encoder → ColBERT → cross; динамический $K/M$.  
+- **Фичи для rerank:** dense sim, BM25, позиция, свежесть, user signals.
 
-### Знания:
-- LTR модели: LightGBM, CatBoost, TF-Ranking, Reformer.
-- Инструкционные rerankеры ("Pick the most relevant").
+## III. Learning‑to‑rank
+- **Модели:** LambdaMART, RankNet, ListNet, TF‑Ranking, LightGBM‑ranker.  
+- **Pairwise vs listwise:** когда что.  
+- **On‑line fine‑tune:** soft‑labels из кликов, knowledge distillation из cross‑encoder.
 
-### Ресурсы:
-- [Microsoft MS MARCO Dataset](https://microsoft.github.io/msmarco/) — основной бенчмарк.
-- [bge-reranker](https://huggingface.co/BAAI/bge-reranker-large) — state-of-the-art reranker.
-- [TF-Ranking (Google)](https://github.com/tensorflow/ranking) — реализация listwise/pairwise ranking.
-- [LambdaMART в LightGBM](https://lightgbm.readthedocs.io/en/latest/Parameters.html#objective) — документированный пример.
+## IV. RAG и generative search
+- Pipeline: retriever → reranker → LLM‑генератор.  
+- **Dynamic context selection:** кластеризация top‑K, маржинальная полезность.  
+- Multi‑hop / memory‑augmented RAG; answer re‑ranking.
 
----
+## V. Online‑feedback и bandits
+- **Explore‑Exploit:** Thompson Sampling, ε‑greedy, UCB — ротация кандидатов.  
+- **Counterfactual LTR:** IPS, DLA, SNIPS, off‑policy evaluation.  
+- **Инструменты:** Vowpal Wabbit `--cb`, Meta BanditPAM.
 
-## RAG (retrieval-augmented generation)
+## VI. Tail‑latency
+- Hedged queries, replication, timeout‑based early abort.  
+- **Adaptive nprobe / efSearch** (IVF/HNSW) под SLA.  
+- Спекулятивная генерация (draft + verifier), streaming LLM.  
+- Кэш‑слои: embedding, ANN‑topK, rerank scores.
 
-### Что ты должен уметь:
-- Построение RAG пайплайна (retriever → reranker → LLM).
-- Обучение retriever+reader (InstructRAG).
-- Prompting с retrieved контекстом.
-- Multi-hop RAG, memory-augmented модели.
+## VII. Embedding lifecycle
+- Drift‑monitor: PSI, KL‑div, embedding norm shift.  
+- Shadow‑index и alias‑switch для zero‑downtime re‑index.  
+- Периодичность re‑train / re‑embed; хранение версий.
 
-### Инфра:
-- LangChain, LlamaIndex, Haystack.
-- HuggingFace RAG, OpenAI APIs, Claude, Mistral, bge-m3.
+## VIII. Персонализация и cold‑start
+- **Cold‑start items:** meta‑features, zero‑shot E5/BGE‑M3, graph‑propagation.  
+- **Cold‑start users:** popular‑fallback, persona embeddings, federated warm‑up.  
+- Two‑tower + LightGCN для user×item симметрии.
 
-### Ресурсы:
-- [Haystack Docs](https://docs.haystack.deepset.ai/) — фреймворк для RAG.
-- [LangChain Retrieval Cookbook](https://python.langchain.com/docs/modules/data_connection/retrievers/) — практические рецепты.
-- [RAG от HuggingFace](https://huggingface.co/docs/transformers/model_doc/rag) — встроенная поддержка.
-- [InstructRAG (Meta)](https://github.com/facebookresearch/instructor-embedding) — новая парадигма supervised retriever + reader.
+## IX. Bias и fairness
+- Популярность‑bias, exposure‑parity @K, calibration.  
+- Митигаторы: re‑rank‑constraints, FairMatch, Δpop penalty.
 
----
+## X. Метрики качества
+- **Offline:** MRR, nDCG@K, Recall@K, MAP; bootstrap CI.  
+- **Online:** CTR, dwell‑time, p50/p95 latency, Δbusiness metric; Sequential / CUPED / Bayesian A/B.  
+- **Fairness metrics:** disparity ratio, fairness@K.
 
-## Feedback loops & Learning to Rank
+## XI. Дорожная карта компетенций
+1. Достигнуть nDCG@10 ≥ 0.45 на MTEB‑QA.  
+2. Снизить p95 latency до 120 ms при K = 100 (IVF‑PQ, GPU).  
+3. Внедрить dynamic bandits → +3 % CTR за квартал.  
+4. Автоматизировать re‑index (shadow → alias) без достоев.
 
-### Что ты должен уметь:
-- Логирование кликов, лайков, scrolls.
-- Online learning, bandit feedback.
-- Fine-tuning по пользовательским событиям.
-- Метрики satisfaction / engagement uplift.
+## XII. Ресурсы
+- **Stanford CS 276 Notes** — учебник ранжирования.  
+- **Bajaj et al., ColBERT‑v2 (2022)**.  
+- **Lin et al., SPLADE++ (2022)**.  
+- **Gao & Callan, E5 Embeddings (2023)**.  
+- **Haystack 2 Docs** — RAG pipeline.  
+- **Pinecone Hybrid Search Guide (2024)**.  
+- **Microsoft TF‑Ranking repo**.  
+- **“Bandits for Recsys”, O’Reilly (2023)**.
 
-### Методологии:
-- DLA, Inverse Propensity Weighting.
-- A/B: CUPED, sequential, Bayesian AB.
-- Hard negatives, лог-основы обучения.
-
-### Ресурсы:
-- [Bandits Book](https://www.andrew.cmu.edu/course/10-702/spring2020/notes/bandits.pdf) — теоретическая база.
-- [Google RecSys YouTube Series](https://www.youtube.com/@GoogleRecSys) — практики Google.
-- [CUPED Explained (Booking.com)](https://booking.ai/cuped-in-a-nutshell-4856babb3412) — корректировка дисперсии в AB.
-- [Implicit Feedback LTR](https://arxiv.org/abs/1003.5956) — seminal paper от Hu et al.
-
----
-
-## Engineering и latency
-
-### Что ты должен уметь:
-- Кэширование embeddings, батчинг, prefetch.
-- Approximate search (IVF, HNSW, PQ).
-- Async stack: FastAPI + asyncio.
-- Профилирование latency, трейсинг.
-
-### Инструменты:
-- FastAPI, TorchScript, TensorRT.
-- Prometheus, Grafana, OpenTelemetry.
-
-### Ресурсы:
-- [FAISS IVF+PQ Guide](https://github.com/facebookresearch/faiss/wiki/Guidelines-to-choose-an-index) — как выбрать index.
-- [Async Python Patterns](https://realpython.com/async-io-python/) — подробный разбор.
-- [OpenTelemetry Guide](https://opentelemetry.io/docs/) — стандарт для tracing.
-
----
-
-## Контентные рекомендации
-
-### Что ты должен уметь:
-- Embeddings для item/user.
-- Two-tower, user/item tower.
-- Short-term/long-term интересы.
-- Seq2Seq модели: Recformer, SASRec.
-
-### Архитектуры:
-- DeepFM, DIN, DLRM, DSSM, MIND, Graph-based.
-
-### Ресурсы:
-- [Recbole](https://github.com/RUCAIBox/RecBole) — библиотека с >60 моделей.
-- [DLRM (Meta)](https://github.com/facebookresearch/dlrm) — industrial-scale модель.
-- [SASRec paper](https://arxiv.org/abs/1808.09781) — self-attention в рекоммендациях.
-- [GraphRec (SIGIR)](https://dl.acm.org/doi/10.1145/3209978.3210002) — моделирование связей.
-
----
-
-## Метрики и оценка
-
-### Что ты должен уметь:
-- MRR, nDCG@K, Recall@K, MAP, Precision@K.
-- Различие offline / online метрик.
-- Distribution shift, CTR drop-off.
-- Error annotation pipelines.
-
-### Ресурсы:
-- [Recommender Metrics Cheat Sheet](https://towardsdatascience.com/recommender-system-metrics-explained-examples-evaluation-369e9f00e6f5)
-- [Evaluation metrics in IR](https://github.com/UKPLab/sentence-transformers/blob/master/examples/evaluation/README.md)
-- [Interpreting CTR](https://www.analyticsvidhya.com/blog/2021/08/all-you-need-to-know-about-click-through-rate-ctr/) — на реальных данных.
-
----
-
-## Data & Storage
-
-### Что ты должен уметь:
-- FAISS, Qdrant, Pinecone, Weaviate, pgvector.
-- Elasticsearch, OpenSearch.
-- Гибридные хранилища (pgvector + Postgres).
-- Обновление embeddings без потери индекса.
-
-### Ресурсы:
-- [Pinecone Docs](https://docs.pinecone.io/) — production-ready API.
-- [pgvector project](https://github.com/pgvector/pgvector) — SQL-native vector DB.
-- [Weaviate 101](https://weaviate.io/developers/weaviate/current/index.html) — очень удобный SDK.
-
----
-
-## LLM-specific Search Tricks
-
-- Semantic Search + LLM Self-Reranking.
-- Chain-of-Thought reasoning по retrieved контексту.
-- Query Rewriting через LLM (например, с prompt: “Переформулируй как поисковый запрос”).
-- Retrieval-Conditioned Generation + Source Attribution.
-
-### Ресурсы:
-- [ReAct prompting](https://arxiv.org/abs/2210.03629)
-- [Self-RAG](https://arxiv.org/abs/2308.03281) — генерация retrieval-aware вопросов.
-- [Query Rewriting for Retrieval](https://arxiv.org/abs/2305.13519)
-
----
-
-## Поддержка продакшена
-
-- CI/CD пайплайны для retriever / reranker.
-- Мониторинг качества / деградации метрик.
-- Canary rollout, A/B инфраструктура.
-- Визуализация embedding space (например, через UMAP, t-SNE).
-
-### Ресурсы:
-- [Featureform](https://www.featureform.com/blog/embedding-monitoring-in-production) — про мониторинг эмбеддингов.
-- [t-SNE, UMAP for vectors](https://distill.pub/2016/misread-tsne/) — как не напортачить с визуализацией.
-- [Arize AI](https://arize.com/) — инструмент для мониторинга ML/LLM в продакшене.

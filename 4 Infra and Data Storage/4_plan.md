@@ -1,141 +1,66 @@
-# Инфраструктура и базы данных — Senior LLM Engineer
+# План компетенций: Инфраструктура и хранилища данных (Senior LLM)
 
-## 🧱 Общий контекст
-
-Этот блок охватывает всё, что связано с хранением, поиском и масштабируемым обслуживанием эмбеддингов, документов и промежуточных результатов поиска. Он критичен для систем semantic search, RAG, и рекомендаций.
+> **Фокус:** проектирование и эксплуатация стойкого хранилища документов и эмбеддингов для поисковых / RAG‑/ рекомендательных систем. Вопросы retrieval‑каскада, низко‑латентного inference и CI/CD разобраны в отдельных планах.
 
 ---
 
-## 🔹 1. Vector Databases
+## I. Vector Databases
+- **Движки:** FAISS (Flat, IVF, PQ, OPQ, HNSW), pgvector, Qdrant / Milvus / Weaviate, Pinecone, Vespa.  
+- **Выбор индекса:** recall ↔ latency ↔ footprint; правила nlist≈√N, nprobe динамический, OPQ для памяти.  
+- **Операции:** batch / streaming ingestion, metadata‑filtering, background re‑build, compaction.  
+- **Шардирование и реплика:** hash‑id, semantic (k‑means), range; консистентность и merge partial‑top‑k.
 
-### Основные технологии:
-- **FAISS** (Flat, IVF, PQ, HNSW, OPQ, Sharding)
-- **pgvector** (плагин PostgreSQL)
-- **Qdrant / Milvus / Weaviate** (cloud / on-premise)
-- **Pinecone / Vespa / Zilliz** (production-ready PaaS)
+## II. Elasticsearch / OpenSearch
+- Кластер: shards × replicas, ILM (Hot‑Warm‑Cold) для экономии.  
+- Анализаторы, `dense_vector`, `script_score`, BM25 ↔ dense fusion.  
+- Режим **hybrid search:** sparse + ANN retrieval → Rank‑Fusion (RRF / weighted sum).
 
-### Навыки:
-- Выбор индекса под задачу: latency vs recall
-- Хранение и обновление эмбеддингов
-- Batch и streaming ingestion
-- Sharding, compaction, TTL, background rebuilding
-- Интеграция с RAG / hybrid search
-- Фильтрация по метаданным (payload)
+## III. SQL / NoSQL слой
+- **PostgreSQL:** JSONB + GIN/GiST, partition by time, `pgvector` для маленьких корпусов.  
+- **MongoDB:** flexible schema, TTL‑collection, Atlas Cluster.  
+- **Redis + RediSearch:** read‑through caching, vector lookup, count‑min‑sketch stats.
 
----
+## IV. Поточные и ETL пайплайны
+- **Ingestion:** Kafka / Pulsar → transformer workers → Vector DB.  
+- **Orchestrators:** Airflow / Prefect / Dagster — snapshot, incremental upsert, watermark‑based dedup.  
+- **Версионирование:** dual‑write workflow, shadow index, atomic alias‑switch.
 
-## 🔹 2. Elasticsearch / OpenSearch
+## V. Жизненный цикл индекса
+- **Drift‑детект:** PSI / KL на распределении расстояний, nClusters.  
+- **Re‑index:** shadow build → canary traffic → alias cutover.  
+- **TTL / expiry:** time‑boxed embeddings, auto‑purge by doc‑state.
 
-### Навыки:
-- Настройка кластеров (single/multi-node)
-- Создание кастомных анализаторов и индексов
-- Поддержка `dense_vector`, `script_score`
-- Hybrid search: sparse (BM25) + dense
-- DSL-запросы: bool, must/filter, scoring functions
-- Настройка refresh, shard count, replicas
+## VI. Оптимизация latency
+- Pre‑computed ANN индексы, cache warm‑up, int8 quantization.  
+- Adaptive `nprobe` / `efSearch`, early‑abort long postings, async refresh.  
+- Tiered storage: NVMe (Hot) → HDD (Warm) → S3 (Cold snapshots).
 
----
+## VII. Безопасность и compliance
+- Multi‑tenant isolation, namespace ACL, row‑/shard‑level RBAC.  
+- GDPR/CCPA: RTBF (delete API → tombstone → async scrub), audit‑trail.  
+- Encryption AES‑GCM at‑rest, TLS in‑transit, secrets (KMS / Vault).  
+- Privacy‑attacks mitigation: DP‑noise on vectors, access quotas.
 
-## 🔹 3. SQL / NoSQL
+## VIII. Мониторинг и наблюдаемость
+- **Метрики:** ingest lag, QPS, recall@k sample, p95 search‑latency, compaction CPU.  
+- **Инструменты:** Prometheus + Grafana, OpenTelemetry traces for query‑path, Loki logs.  
+- Alert‑rules: ingest‑lag > SLA, shard‑hotspot, disk‑full, recall drop.
 
-### PostgreSQL:
-- Работа с JSONB, GIN/GiST индексами
-- Оптимизация запросов (EXPLAIN ANALYZE)
-- Partitioning по времени
-- Использование `pgvector` для dense search
+## IX. Дорожная карта компетенций
+1. Поднять кластер Qdrant + Kafka ingestion → p95 latency < 100 мс при 10 M векторах.  
+2. Внедрить hybrid BM25 + dense fusion в OpenSearch, прирост nDCG ≥ 3 %.  
+3. Реализовать shadow re‑index с alias‑switch без downtime.  
+4. Настроить PSI‑drift мониторинг и auto‑retrain алёрт.  
+5. Обеспечить RTBF: 99 % документов удаляются < 5 мин.
 
-### MongoDB:
-- Хранение semi-structured данных
-- Индексы, TTL, шардирование
-
-### Redis:
-- Кеширование embedding-запросов
-- Redis + RediSearch для vector lookup
-
----
-
-## 🔹 4. ETL и потоковая обработка
-
-### Навыки:
-- ETL пайплайны: Kafka / RabbitMQ → VectorDB
-- Использование Airflow / Prefect / Dagster
-- Инкрементальное обновление эмбеддингов
-- Интеграция ingestion → storage → indexing
-- Snapshot-подходы для версионирования
-
----
-
-## 🔹 5. Инфраструктура
-
-- CI/CD пайплайны для деплоя (GitHub Actions, GitLab CI)
-- Docker Compose для локальной разработки
-- Helm + Kubernetes для продакшна
-- Мониторинг (Prometheus, Grafana)
-- Метрики: latency, update rate, hit-rate cache
-- Billing-aware дизайн (ограничение запросов к Pinecone и пр.)
-
----
-
-## 🔹 6. Latency-aware дизайн
-
-- Sparse → Dense → Rerank (BM25 → dense → cross-encoder)
-- Async обновление индексов
-- Quantization (int8 vectors)
-- Использование precomputed ANN индексов
-- TTL и auto-deletion векторов по событиям
-
----
-
-## 🔹 7. Безопасность и compliance
-
-- Scoped access: tenant isolation, ACL
-- GDPR/CCPA: удаление по запросу
-- TTL и автосброс эмбеддингов
-- Обфускация/анонимизация sensitive data
-- Аудит доступа к embedding хранилищам
-
----
-
-## 📌 Чеклист навыков
-
-| Область                   | Навыки                                                                 |
-|--------------------------|------------------------------------------------------------------------|
-| Vector DB                | FAISS, pgvector, Qdrant, Pinecone — поиск, обновление, шардинг       |
-| Hybrid Search            | ES/OpenSearch + dense/fusion search                                   |
-| SQL/NoSQL                | PostgreSQL, MongoDB, Redis — модели данных, индексы, масштабирование |
-| Инфраструктура           | CI/CD, Docker, Kubernetes, мониторинг, latency-оптимизация            |
-| Обработка данных         | ETL, ingestion, трансформация, хранение embeddings                    |
-| Безопасность и Privacy   | Удаление данных, TTL, доступ к приватным embedding                    |
-
----
-
-## 📚 Ресурсы
-
-### Vector Databases:
-- [FAISS documentation](https://github.com/facebookresearch/faiss)
-- [Qdrant docs](https://qdrant.tech/documentation/)
-- [pgvector](https://github.com/pgvector/pgvector)
-- [Weaviate blog on hybrid search](https://weaviate.io/blog/hybrid-search-1)
-- [Pinecone guide to vector search](https://docs.pinecone.io/docs/overview)
-
-### Elasticsearch / OpenSearch:
-- [ES dense vector docs](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html)
-- [OpenSearch knn search](https://opensearch.org/docs/latest/search-plugins/knn/)
-- [Hybrid retrieval example](https://www.elastic.co/blog/introducing-hybrid-search)
-
-### SQL / NoSQL:
-- [PostgreSQL JSONB guide](https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-json/)
-- [MongoDB Indexing](https://www.mongodb.com/docs/manual/indexes/)
-- [Redis Search and Vector similarity](https://redis.io/docs/interact/search/)
-
-### ETL & Infra:
-- [Airflow official](https://airflow.apache.org/)
-- [Docker + FAISS dev env](https://github.com/facebookresearch/faiss/issues/1736)
-- [Vector indexing in production](https://sebastianraschka.com/blog/2023/approximate-nearest-neighbor-search.html)
-
-### Security & Privacy:
-- [GDPR and machine learning](https://arxiv.org/abs/1907.10320)
-- [Secure vector search design (Qdrant)](https://qdrant.tech/documentation/concepts/security/)
-
----
+## X. Ресурсы
+- **FAISS docs** — github.com/facebookresearch/faiss.  
+- **Qdrant guide** — qdrant.tech/documentation.  
+- **Weaviate hybrid search blog** — weaviate.io/blog/hybrid-search-1.  
+- **OpenSearch K‑NN** — opensearch.org/docs/latest/search-plugins/knn/.  
+- **pgvector** — github.com/pgvector/pgvector.  
+- **Airflow** — airflow.apache.org.  
+- **Dagster Incremental I/O** — docs.dagster.io.  
+- **Data drift in embeddings** — evidentlyai.com/blog/embedding-drift-detection.  
+- **GDPR & Machine Learning** — arxiv.org/abs/1907.10320.
 

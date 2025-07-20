@@ -157,29 +157,29 @@
 ## Ресурсы
 
 ### 1. Трансформеры и представления
-- [Attention Is All You Need (Vaswani et al., 2017)](https://arxiv.org/abs/1706.03762) citeturn0search0
-- [Rotary Position Embedding (RoPE)](https://arxiv.org/abs/2104.09864) citeturn0search1
-- [ALiBi: Attention with Linear Biases](https://arxiv.org/abs/2208.08988) citeturn0search2
+- [Attention Is All You Need (Vaswani et al., 2017)](https://arxiv.org/abs/1706.03762) 
+- [Rotary Position Embedding (RoPE)](https://arxiv.org/abs/2104.09864) 
+- [ALiBi: Attention with Linear Biases](https://arxiv.org/abs/2208.08988) 
 
 ### 2. Embeddings и взаимодействие
-- [ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction](https://arxiv.org/abs/2004.12832) citeturn0search3
+- [ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction](https://arxiv.org/abs/2004.12832) 
 
 ### 3. Лексический сигнал + гибрид
-- [The Probabilistic Relevance Framework: BM25 and Beyond](https://www.staff.city.ac.uk/~sbrp622/papers/foundations_bm25_review.pdf) citeturn0search4
-- [Practical BM25 — Part 2: The BM25 Algorithm and its Variables](https://www.elastic.co/blog/practical-bm25-part-2-the-bm25-algorithm-and-its-variables) citeturn0search5
+- [The Probabilistic Relevance Framework: BM25 and Beyond](https://www.staff.city.ac.uk/~sbrp622/papers/foundations_bm25_review.pdf) 
+- [Practical BM25 — Part 2: The BM25 Algorithm and its Variables](https://www.elastic.co/blog/practical-bm25-part-2-the-bm25-algorithm-and-its-variables) 
 
 ### 4. Approximate Nearest Neighbor (ANN)
-- [Faiss: A library for efficient similarity search](https://github.com/facebookresearch/faiss) citeturn0search6
+- [Faiss: A library for efficient similarity search](https://github.com/facebookresearch/faiss) 
 
 ### 5. Vector DB & распределённость
-- [pgvector: Open-source vector similarity search for Postgres](https://github.com/pgvector/pgvector) citeturn0search7
+- [pgvector: Open-source vector similarity search for Postgres](https://github.com/pgvector/pgvector) 
 
 ### 6. Индексация, обновления и Embedding Lifecycle
-- [Shift happens: 5 methods to detect drift in ML embeddings](https://www.evidentlyai.com/blog/embedding-drift-detection) citeturn1search0
+- [Shift happens: 5 methods to detect drift in ML embeddings](https://www.evidentlyai.com/blog/embedding-drift-detection) 
 
 ### 7. Дедупликация и качество корпуса
-- [MinHash](https://en.wikipedia.org/wiki/MinHash) citeturn2search0
-- [SimHash](https://en.wikipedia.org/wiki/SimHash) citeturn3search0
+- [MinHash](https://en.wikipedia.org/wiki/MinHash) 
+- [SimHash](https://en.wikipedia.org/wiki/SimHash) 
 
 ### 8. Retrieval → Reranking каскад
 - [Rerankers and Two-Stage Retrieval](https://www.pinecone.io/learn/series/rag/rerankers/) citeturn19search3
@@ -192,16 +192,16 @@
 - [Bootstrap confidence intervals in IR](https://www.fiddler.ai/blog/measuring-data-drift-population-stability-index) citeturn14search1
 
 ### 11. Латентность и оптимизация inference
-- [PyTorch Quantization Tutorial](https://pytorch.org/docs/stable/quantization.html) citeturn6search0
+- [PyTorch Quantization Tutorial](https://pytorch.org/docs/stable/quantization.html) 
 
 ### 12. Кэширование и память
-- [OpenSearch Hybrid Search Caching](https://opensearch.org/docs/latest/search-plugins/knn/) citeturn8search1
+- [OpenSearch Hybrid Search Caching](https://opensearch.org/docs/latest/search-plugins/knn/) 
 
 ### 13. Масштабирование и распределённый дизайн
 - [K-way merge algorithm](https://en.wikipedia.org/wiki/K-way_merge_algorithm) citeturn20search0
 
 ### 14. Data Freshness & Consistency
-- [Elasticsearch Alias Switch](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-aliases.html) citeturn9search1
+- [Elasticsearch Alias Switch](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-aliases.html) 
 
 ### 15. Версионирование моделей
 - [Shadow Deployment Patterns (Google Cloud)](https://cloud.google.com/architecture/shadow-deployment-ml) citeturn10search0
