@@ -27,7 +27,7 @@ $$
 $$
 \mathrm{Attention}(Q,K,V) = \mathrm{softmax}\Bigl(\frac{Q K^\top}{\sqrt{d_k}} + M\Bigr)\,V,
 $$
-где $M_{i,j} = -\infty$ при $j > i$, что гарантирует автогрессивность генерации.
+где $M_{i,j} = -\infty$ при $j > i$, что гарантирует авторегрессивность генерации.
 
 ## 4. Multi-Head Attention
 

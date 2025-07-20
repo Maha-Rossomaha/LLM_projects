@@ -1,6 +1,8 @@
 # Сравнение языковых моделей: Causal vs Masked vs Seq2Seq
 
----
+URL:  
+🔗 [HF LM](https://huggingface.co/course/chapter1)  
+🔗 [Understanding Causal LLM’s, Masked LLM’s, and Seq2Seq](https://medium.com/%40tom_21755/understanding-causal-llms-masked-llm-s-and-seq2seq-a-guide-to-language-model-training-d4457bbd07fa)  
 
 ## 1. Causal Language Modeling (CLM)
 
