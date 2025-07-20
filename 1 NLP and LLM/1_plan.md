@@ -4,22 +4,25 @@
 **Цель:** Понимать внутреннее устройство LLM, различия моделей, использовать и модифицировать под задачу.
 
 - Принцип работы Transformer: attention, encoder/decoder схемы  
-  🔗 https://jalammar.github.io/illustrated-transformer/  
-  🔗 https://sebastianraschka.com/blog/2023/self-attention-from-scratch.html
-  🔗 https://arxiv.org/pdf/1706.03762
-
+  🔗 [Transformers illustrated](https://jalammar.github.io/illustrated-transformer/)  
+  🔗 [Transformers code](https://sebastianraschka.com/blog/2023/self-attention-from-scratch.html)  
+  🔗 [Attention is all you need](https://arxiv.org/pdf/1706.03762)  
+  🔗 [Mixture of Experts Explained](https://huggingface.co/blog/moe)  
+  🔗 [A Visual Guide to MoE](https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-mixture-of-experts)  
+  🔗 [Understanding Mixture of Experts: Building a MoE Model with PyTorch](https://medium.com/@prateeksikdar/understanding-mixture-of-experts-building-a-moe-model-with-pytorch-dd373d9db81c)
 - Архитектуры: BERT, GPT, T5, LLaMA, Mistral, Claude, Gemini и т.п.  
-  🔗 https://huggingface.co/blog/bert-101
-  🔗 https://dugas.ch/artificial_curiosity/GPT_architecture.html
-  🔗 https://medium.com/%40gagangupta_82781/understanding-the-t5-model-a-comprehensive-guide-b4d5c02c234b
-  🔗 https://ai.meta.com/blog/meta-llama-3-1/
-  🔗 https://medium.com/dair-ai/papers-explained-mistral-7b-b9632dedf580
-  🔗 https://docs.anthropic.com/en/docs/about-claude/models/overview
-  🔗 https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024
+  🔗 [BERT](https://huggingface.co/blog/bert-101)  
+  🔗 [GPT-3](https://dugas.ch/artificial_curiosity/GPT_architecture.html)  
+  🔗 [T5](https://medium.com/40gagangupta_82781understanding-the-t5-model-a-comprehensive-guide-b4d5c02c234b)  
+  🔗 [LLama3_1](https://ai.meta.com/blog/meta-llama-3-1/)  
+  🔗 [LLama4_1](https://ai.meta.com/blog/llama-4-multimodal-intelligence/)  
+  🔗 [Mistral 7b](https://medium.com/dair-ai/papers-explained-mistral-7b-b9632dedf580)  
+  🔗 https://docs.anthropic.com/en/docs/about-claude/models/overview  
+  🔗 [Gemini](https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024)  
 
 - Отличия: causal vs masked LM, decoder-only vs encoder-decoder  
-  🔗 https://huggingface.co/course/chapter1
-  🔗 https://medium.com/%40tom_21755/understanding-causal-llms-masked-llm-s-and-seq2seq-a-guide-to-language-model-training-d4457bbd07fa
+  🔗 https://huggingface.co/course/chapter1  
+  🔗 https://medium.com/%40tom_21755/understanding-causal-llms-masked-llm-s-and-seq2seq-a-guide-to-language-model-training-d4457bbd07fa  
   🔗 https://huggingface.co/docs/transformers/en/tasks/language_modeling
 
 - Устройство токенизации (BPE, SentencePiece)  
