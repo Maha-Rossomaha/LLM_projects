@@ -71,7 +71,7 @@ $$
 - Декодер: causal attention + cross‑attention к энкодеру.
 
 **Плюсы:**  
-- Combines strengths of both causal и masked.  
+- Сочетает преимущества causal и masked.  
 - Идеален для перевода, суммаризации, Q&A.
 
 **Минусы:**  
