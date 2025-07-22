@@ -57,7 +57,7 @@ $$
 | Компонент                             | Энкодер                                 | Декодер                                                                  |
 | ------------------------------------- | --------------------------------------- | ------------------------------------------------------------------------ |
 | Self-Attention                        | Полное                                  | Causal маска $M_c$ (triangular)                                       |
-| Cross-Attention \$\operatorname{CA}\$ | —                                       | $\operatorname{CA}(Q{=}\operatorname{LN}(Y^{(l-1)}),K{=}V{=}H^{(L)})$ |
+| Cross-Attention $\operatorname{CA}$   | —                                       | $\operatorname{CA}(Q{=}\operatorname{LN}(Y^{(l-1)}),K{=}V{=}H^{(L)})$ |
 | Позиционное смещение                  | *Learned relative* (T5-style) для обоих |                                                                          |
 
 ---
