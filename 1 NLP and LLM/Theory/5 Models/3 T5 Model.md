@@ -49,7 +49,7 @@ $$
 где
 
 * $\operatorname{MHSA}(Q)=\textstyle\sum_{h=1}^H \operatorname{softmax}!\left(\frac{Q_hK_h^\top}{\sqrt{d_k}}\right) V_h,W_h^O$;
-* $\operatorname{FFN}(x)=W_2,\;$ $\sigma(W_1x),\;$ $\sigma=\text{ReLU}$ или GELU;
+* $\operatorname{FFN}(x)=W_2,\;$ $\sigma(W_1x),\;$ $\sigma=\text{ReLU}$ или $\text{GELU}$;
 * **Pre-LN** — нормализация до каждого саб-слоя стабилизирует градиенты в глубоком ($L\le 24$) стеке;
 * **Residual** — суммирование входа и выхода каждого саб-слоя, обеспечивая дифференцируемый путь $O(L)$.
 ---
