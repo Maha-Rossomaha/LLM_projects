@@ -270,6 +270,7 @@ mask = (
     torch.arange(cap, device=x.device)[None, :]  # [1, cap]
     < torch.bincount(idx, minlength=E)[idx][:, None]  # [B*S, 1]
 )
-```
+```  
+
     - **torch.arange(cap)[None, :]**
         - Создаётся вектор **[0, 1, 2, ..., cap-1]** и расширяется до размерности **[1, cap]**.
