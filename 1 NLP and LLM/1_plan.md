@@ -19,11 +19,21 @@
 - **Критические факторы производительности**
   
 - **Tokenizers**  
-  🔗 https://huggingface.co/course/chapter6  
-  🔗 https://huggingface.co/docs/tokenizers/index
+  🔗 [HF Tokenizers](https://huggingface.co/course/chapter6)  
+
+- **Embeddings**
+  🔗 [Embedding layer tutorial: A comprehensive guide to neural network representations](https://www.byteplus.com/en/topic/400368)
+  🔗 [Word2Vec](https://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/)
+  🔗 [GloVe](https://aclanthology.org/D14-1162/)
 
 - **Layers**: Embeddings, LayerNorm, FeedForward, Positional Encoding, Attention  
-  🔗 https://lilianweng.github.io/lil-log/
+  🔗 (Embeddings)[]  
+  🔗 (Attention)[]  
+  🔗 (Layer Normalization)[]  
+  🔗 (Feed-Forward)[]  
+  🔗 (Positional Encoding)[]  
+  🔗 (Residual Connections)[]  
+  🔗 (Dropout)[]  
 
 - **Models**:  
   🔗 [BERT](https://huggingface.co/blog/bert-101)  
@@ -43,13 +53,19 @@
 ## II. Файнтюнинг и адаптация моделей
 **Цель:** Уметь адаптировать любую LLM под свою задачу с минимальными затратами.
 
-- Классический fine-tuning (FP32, full finetune)  
+- **Классический fine-tuning (FP32, full finetune)**  
   🔗 https://huggingface.co/course/chapter3
 
-- Parameter-efficient tuning:  
+- **Parameter-efficient tuning**  
   🔗 https://github.com/huggingface/peft  
   🔗 https://arxiv.org/abs/2305.14314 (QLoRA)  
   🔗 https://sebastianraschka.com/blog/2023/peft-qlora.html
+
+- **PEFT: Adapters & LoRA**  
+  🔗 https://arxiv.org/abs/1902.00751  
+  🔗 https://adapterhub.ml  
+  🔗 https://arxiv.org/abs/2106.09685  
+  🔗 https://github.com/microsoft/LoRA  
 
 - Low-bit inference: quantization (int8, int4), `bitsandbytes`, `AutoGPTQ`  
   🔗 https://github.com/TimDettmers/bitsandbytes  
