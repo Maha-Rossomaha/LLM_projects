@@ -27,8 +27,6 @@
   🔗 [GloVe](https://aclanthology.org/D14-1162/)
 
 - **Layers**: Embeddings, LayerNorm, FeedForward, Positional Encoding, Attention  
-  🔗 (Embeddings)[]  
-  🔗 (Attention)[]  
   🔗 (Layer Normalization)[]  
   🔗 (Feed-Forward)[]  
   🔗 (Positional Encoding)[]  
