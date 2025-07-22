@@ -199,4 +199,7 @@ class MoEBlock(nn.Module):
 | **6. Gather**         | `output[sel] += out * weight`          | Обратная агрегация результатов экспертов, взвешенная по исходным вероятностям (Switch Transformer trick).                                          |
 | **7. Aux loss**       | `aux_loss = (E*(load*prob).sum())`     | **Load-balancing loss** стимулирует равномерное использование экспертов, предотвращая «голодание» .                                                 |
 
+### 2.4 Подробный разбор forward
+#### Шаг 1: Подготовка токенов и маршрутизация
+**Вход**: **x** - тензор [batch, seq_len, d_model]
 
