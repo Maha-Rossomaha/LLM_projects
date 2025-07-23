@@ -135,18 +135,6 @@ y = rmsnorm(x)  # x: [batch, seq_len, hidden_size]
 ## 6. Pre-Layer Normalization (Pre-LN)
 
 Pre-Layer Normalization (Pre-LN) — это схема размещения слоя нормализации до основной подструктуры Transformer (Multi-Head Attention + Feed-Forward). В отличие от классического Post-LN (LayerNorm после Residual), Pre-LN ставит LayerNorm перед каждой «ядровой» операции и остаточным добавлением:  
-```mermaid
-flowchart 
-    subgraph Pre-LN Transformer Block
-        I[Input] --> LN1[LayerNorm]
-        LN1 --> SA[Self-Attention]
-        SA --> R1[Add & Residual]
-        R1 --> LN2[LayerNorm]
-        LN2 --> FF[Feed-Forward]
-        FF --> R2[Add & Residual]
-        R2 --> O[Output]
-    end
-```
 
 ### 6.1. Математическая формулировка
 
