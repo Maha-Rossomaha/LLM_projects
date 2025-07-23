@@ -26,10 +26,10 @@
   🔗 [Word2Vec](https://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/)
   🔗 [GloVe](https://aclanthology.org/D14-1162/)
 
-- **Layers**: Embeddings, LayerNorm, FeedForward, Positional Encoding, Attention  
+- **Layers**:   
   🔗 (Layer Normalization)[]  
   🔗 (Feed-Forward)[]  
-  🔗 (Positional Encoding)[]  
+  🔗 (Positional Encoding)[https://codelabsacademy.com/ru/news/roformer-enhanced-transformer-with-rotary-position-embedding-2024-5-30/]  
   🔗 (Residual Connections)[]  
   🔗 (Dropout)[]  
 
