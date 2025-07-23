@@ -33,6 +33,9 @@
   🔗 (Residual Connections)[]  
   🔗 (Dropout)[]  
 
+- **Activations**  
+  🔗 ()[]
+
 - **Models**:  
   🔗 [BERT](https://huggingface.co/blog/bert-101)  
   🔗 [GPT-3](https://dugas.ch/artificial_curiosity/GPT_architecture.html)  
