@@ -49,11 +49,11 @@
   🔗 https://huggingface.co/course/chapter3
 
 - **Parameter-efficient tuning**  
-  🔗 https://github.com/huggingface/peft  
-  🔗 https://arxiv.org/abs/2305.14314 (QLoRA)  
+  🔗 [PEFT](https://habr.com/ru/articles/791966/)  
+  🔗 [LoRA](https://arxiv.org/abs/2106.09685)  
+  🔗 [QLoRA 1](https://medium.com/@gitlostmurali/understanding-lora-and-qlora-the-powerhouses-of-efficient-finetuning-in-large-language-models-7ac1adf6c0cf)  
+  🔗 [QLoRA 2](https://www.unite.ai/lora-qlora-and-qa-lora-efficient-adaptability-in-large-language-models-through-low-rank-matrix-factorization/)  
   🔗 https://sebastianraschka.com/blog/2023/peft-qlora.html
-
-- **PEFT: Adapters & LoRA**  
   🔗 https://arxiv.org/abs/1902.00751  
   🔗 https://adapterhub.ml  
   🔗 https://arxiv.org/abs/2106.09685  
