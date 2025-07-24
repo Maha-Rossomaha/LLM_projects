@@ -40,9 +40,6 @@
   🔗 [Mixtral 8x7B](https://mistral.ai/news/mixtral-of-experts)  
   🔗 [Gemini 2.5](https://arxiv.org/pdf/2507.06261)  
 
-- Работа с `transformers`, `config`, `forward`, `past_key_values`  
-  🔗 https://huggingface.co/docs/transformers/index
-
 ---
 
 ## II. Файнтюнинг и адаптация моделей
