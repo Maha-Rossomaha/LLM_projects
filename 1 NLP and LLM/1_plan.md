@@ -53,11 +53,10 @@
   🔗 [LoRA](https://arxiv.org/abs/2106.09685)  
   🔗 [QLoRA 1](https://medium.com/@gitlostmurali/understanding-lora-and-qlora-the-powerhouses-of-efficient-finetuning-in-large-language-models-7ac1adf6c0cf)  
   🔗 [QLoRA 2](https://www.unite.ai/lora-qlora-and-qa-lora-efficient-adaptability-in-large-language-models-through-low-rank-matrix-factorization/)  
-  🔗 https://sebastianraschka.com/blog/2023/peft-qlora.html
-  🔗 https://arxiv.org/abs/1902.00751  
-  🔗 https://adapterhub.ml  
-  🔗 https://arxiv.org/abs/2106.09685  
-  🔗 https://github.com/microsoft/LoRA  
+  🔗 [QLoRA 3](https://sebastianraschka.com/blog/2023/peft-qlora.html)  
+  🔗 [Prefix Tuning](https://arxiv.org/abs/2101.00190)  
+  🔗 [Prompt Tuning](https://arxiv.org/abs/2104.08691)  
+  🔗 [Adapters](https://magazine.sebastianraschka.com/p/finetuning-llms-with-adapters#:~:text=The%20idea%20of%20parameter%2Defficient,the%20pretrained%20LLM%20remain%20frozen.)  
 
 - Low-bit inference: quantization (int8, int4), `bitsandbytes`, `AutoGPTQ`  
   🔗 https://github.com/TimDettmers/bitsandbytes  
