@@ -22,10 +22,11 @@
 - **Embeddings**  
   🔗 [Embedding layer tutorial: A comprehensive guide to neural network representations](https://www.byteplus.com/en/topic/400368)  
   🔗 [Word2Vec](https://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/)  
-  🔗 [GloVe](https://aclanthology.org/D14-1162/)
+  🔗 [GloVe](https://aclanthology.org/D14-1162/)  
+  🔗 [FastText](https://arxiv.org/abs/1607.04606)
 
 - **Layers and Activations**:   
-  🔗 Layer Normalization  
+  🔗 [Layer Normalization](https://medium.com/@aisagescribe/ace-ai-interview-series-8-what-is-the-common-normalization-method-in-llm-training-18e559f46e08)  
   🔗 [Feed-Forward](https://sebastianraschka.com/blog/2023/transformer-feedforward.html)  
   🔗 [Positional Encoding](https://codelabsacademy.com/ru/news/roformer-enhanced-transformer-with-rotary-position-embedding-2024-5-30/)  
   🔗 [Dropout](https://habr.com/ru/companies/wunderfund/articles/330814/)  
