@@ -1,0 +1,2 @@
+[\s]*:contentReference\[oaicite:[0-9]*\]\{index=[0-9]*\}
+[\s]*citeturn[0-9]search[0-9]*

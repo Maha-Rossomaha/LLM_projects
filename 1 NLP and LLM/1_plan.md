@@ -15,26 +15,20 @@
   🔗 [HF LM](https://huggingface.co/course/chapter1)  
   🔗 [Understanding Causal LLM’s, Masked LLM’s, and Seq2Seq](https://medium.com/%40tom_21755/understanding-causal-llms-masked-llm-s-and-seq2seq-a-guide-to-language-model-training-d4457bbd07fa)  
   🔗 [HF Encoder-Decoder](https://huggingface.co/learn/llm-course/en/chapter1/6)
-
-- **Критические факторы производительности**
   
 - **Tokenizers**  
   🔗 [HF Tokenizers](https://huggingface.co/course/chapter6)  
 
-- **Embeddings**
-  🔗 [Embedding layer tutorial: A comprehensive guide to neural network representations](https://www.byteplus.com/en/topic/400368)
-  🔗 [Word2Vec](https://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/)
+- **Embeddings**  
+  🔗 [Embedding layer tutorial: A comprehensive guide to neural network representations](https://www.byteplus.com/en/topic/400368)  
+  🔗 [Word2Vec](https://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/)  
   🔗 [GloVe](https://aclanthology.org/D14-1162/)
 
-- **Layers**:   
-  🔗 (Layer Normalization)[]  
-  🔗 (Feed-Forward)[]  
-  🔗 (Positional Encoding)[https://codelabsacademy.com/ru/news/roformer-enhanced-transformer-with-rotary-position-embedding-2024-5-30/]  
-  🔗 (Residual Connections)[]  
-  🔗 (Dropout)[]  
-
-- **Activations**  
-  🔗 ()[]
+- **Layers and Activations**:   
+  🔗 Layer Normalization  
+  🔗 [Feed-Forward](https://sebastianraschka.com/blog/2023/transformer-feedforward.html)  
+  🔗 [Positional Encoding](https://codelabsacademy.com/ru/news/roformer-enhanced-transformer-with-rotary-position-embedding-2024-5-30/)  
+  🔗 [Dropout](https://habr.com/ru/companies/wunderfund/articles/330814/)  
 
 - **Models**:  
   🔗 [BERT](https://huggingface.co/blog/bert-101)  
