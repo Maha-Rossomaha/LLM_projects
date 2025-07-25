@@ -48,7 +48,6 @@
 
 - **Классический fine-tuning (FP32, full finetune)**  
   🔗 [Fine Tuning](https://huggingface.co/course/chapter3)  
-  🔗 [SFT]()  
 
 - **Parameter-efficient tuning**  
   🔗 [PEFT](https://habr.com/ru/articles/791966/)  
@@ -59,6 +58,7 @@
   🔗 [Prefix Tuning](https://arxiv.org/abs/2101.00190)  
   🔗 [Prompt Tuning](https://arxiv.org/abs/2104.08691)  
   🔗 [Adapters](https://magazine.sebastianraschka.com/p/finetuning-llms-with-adapters#:~:text=The%20idea%20of%20parameter%2Defficient,the%20pretrained%20LLM%20remain%20frozen.)  
+  🔗 [Domain Adaptation and Comparison]()
 
 - Alignment 
   🔗 [InstuctGPT](https://arxiv.org/abs/2203.02155)  
