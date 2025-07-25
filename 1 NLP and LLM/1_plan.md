@@ -47,7 +47,8 @@
 **Цель:** Уметь адаптировать любую LLM под свою задачу с минимальными затратами.
 
 - **Классический fine-tuning (FP32, full finetune)**  
-  🔗 https://huggingface.co/course/chapter3
+  🔗 [Fine Tuning](https://huggingface.co/course/chapter3)  
+  🔗 [SFT]()  
 
 - **Parameter-efficient tuning**  
   🔗 [PEFT](https://habr.com/ru/articles/791966/)  
