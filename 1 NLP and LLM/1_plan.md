@@ -59,6 +59,11 @@
   🔗 [Prompt Tuning](https://arxiv.org/abs/2104.08691)  
   🔗 [Adapters](https://magazine.sebastianraschka.com/p/finetuning-llms-with-adapters#:~:text=The%20idea%20of%20parameter%2Defficient,the%20pretrained%20LLM%20remain%20frozen.)  
 
+- Alignment 
+  🔗 [InstuctGPT](https://arxiv.org/abs/2203.02155)  
+  🔗 [RLHF](https://huggingface.co/blog/rlhf)  
+  🔗 [DPO](https://huggingface.co/blog/pref-tuning)  
+
 - Low-bit inference: quantization (int8, int4), `bitsandbytes`, `AutoGPTQ`  
   🔗 https://github.com/TimDettmers/bitsandbytes  
   🔗 https://github.com/PanQiWei/AutoGPTQ
