@@ -60,7 +60,7 @@
   🔗 [Adapters](https://magazine.sebastianraschka.com/p/finetuning-llms-with-adapters#:~:text=The%20idea%20of%20parameter%2Defficient,the%20pretrained%20LLM%20remain%20frozen.)  
   🔗 [Domain Adaptation and Comparison]()
 
-- Alignment 
+- Alignment  
   🔗 [InstuctGPT](https://arxiv.org/abs/2203.02155)  
   🔗 [RLHF](https://huggingface.co/blog/rlhf)  
   🔗 [DPO](https://huggingface.co/blog/pref-tuning)  
@@ -69,7 +69,7 @@
   🔗 https://github.com/TimDettmers/bitsandbytes  
   🔗 https://github.com/PanQiWei/AutoGPTQ
 
-- Инструменты `PEFT`, `Trainer`, `accelerate`, `deepspeed`  
+- Инструменты `PEFT`, `Trainer`, `accelerate`, `deepspeed`   
   🔗 https://github.com/huggingface/accelerate  
   🔗 https://huggingface.co/docs/transformers/perf_train_gpu_one
 
