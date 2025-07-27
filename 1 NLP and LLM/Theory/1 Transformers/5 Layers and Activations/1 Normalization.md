@@ -216,4 +216,4 @@ class PreLNTransformerBlock(nn.Module):
 | Нормализация выхода    | после каждого слоя            | только после Residual Block   |
 | Пропускная способность | немного ниже на inference     | чуть быстрее (меньше норм)    |
 
-![alt text](../../0%20images/image.png)
+![alt text](../../0%20images/image_0.png)
