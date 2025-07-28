@@ -66,8 +66,8 @@
   🔗 [DPO](https://huggingface.co/blog/pref-tuning)  
 
 - Low-bit inference: quantization (int8, int4), `bitsandbytes`, `AutoGPTQ`  
-  🔗 https://github.com/TimDettmers/bitsandbytes  
-  🔗 https://github.com/PanQiWei/AutoGPTQ
+  🔗 [A Survey on Quantization Methods for Efficient Neural Network Inference](https://arxiv.org/abs/2003.13630)  
+  🔗 []()  
 
 - Инструменты `PEFT`, `Trainer`, `accelerate`, `deepspeed`   
   🔗 https://github.com/huggingface/accelerate  
