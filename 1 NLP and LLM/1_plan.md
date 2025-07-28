@@ -68,6 +68,8 @@
 - **Low-bit inference: quantization**  
   🔗 [A Survey on Quantization Methods for Efficient Neural Network Inference](https://arxiv.org/abs/2003.13630)  
 
+- **Эффективное обучение**: gradient accumulation, model parallelism (tensor/pipeline), ZeRO stages (DeepSpeed), memory-efficient optimizers
+
 - **Instruments**  
   🔗 [PEFT](https://huggingface.co/docs/peft/index)  
   🔗 [Accelerate](https://github.com/huggingface/accelerate)  

@@ -19,7 +19,11 @@
 ## III. Learning‑to‑rank
 - **Модели:** LambdaMART, RankNet, ListNet, TF‑Ranking, LightGBM‑ranker.  
 - **Pairwise vs listwise:** когда что.  
-- **On‑line fine‑tune:** soft‑labels из кликов, knowledge distillation из cross‑encoder.
+- **On‑line fine‑tune:** soft‑labels из кликов, knowledge distillation из cross‑encoder.  
+- **Distillation:**  
+  – *Hard-label distillation:* ученик учится предсказывать финальный выбор учителя (например, top‑1).  
+  – *Soft-label distillation:* ученик приближает распределение логитов (softmax) учителя.  
+  → Soft‑label distillation чаще даёт лучшие результаты, особенно при многоклассовых и ранжирующих задачах.
 
 ## IV. RAG и generative search
 - Pipeline: retriever → reranker → LLM‑генератор.  

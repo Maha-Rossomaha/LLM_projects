@@ -47,8 +47,22 @@
 
 ## 9. Рерэнкеры: Cross-Encoder vs Late Interaction
 **Что знать:** Cross-encoder — полное взаимодействие токенов, высокая точность, высокая стоимость; Late interaction (ColBERT) — хранит пер-токенные векторы, MaxSim, компромисс; distillation и knowledge transfer.  
-**Что уметь:** динамический выбор модели по SLA; компрессия токеновых векторов (product quantization, pruning); distill cross → bi для ускорения.  
+**Что уметь:**  
+– distill cross → bi для ускорения.  
+– динамический выбор модели по SLA  
+– компрессия токеновых векторов (product quantization, pruning)  
+– понимать разницу между hard и soft distillation:  
+  • *Hard:* обучение на выборе лучшего варианта от учителя.  
+  • *Soft:* приближение полной вероятностной маски (логиты/softmax).  
+→ Soft distillation особенно полезна в rerank-задачах с множеством кандидатов или генерацией.  
+
 **Интервью:** “когда cross-encoder не окупается?”, “как сжать ColBERT embeddings?”.
+
+## 9. Рерэнкеры: Cross-Encoder vs Late Interaction
+**Что знать:** Cross-encoder — полное взаимодействие токенов, высокая точность, высокая стоимость; Late interaction (ColBERT) — хранит пер-токенные векторы, MaxSim, компромисс; distillation и knowledge transfer.  
+**Что уметь:**  
+
+
 
 ## 10. Метрики и оценка (офлайн/онлайн)
 **Что знать:** MRR, nDCG (логарифмическая скидка), Recall@K, Precision@K, MAP; отличие офлайн оценок (human relevance judgements) от онлайн (CTR, dwell, conversions); интерпретация дельт и доверительных интервалов.  
