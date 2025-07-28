@@ -3,7 +3,7 @@
 ## I. Архитектуры и фундамент
 **Цель:** Понимать внутреннее устройство LLM, различия моделей, использовать и модифицировать под задачу.
 
-- **Transformers**:  
+- **Transformers**  
   🔗 [Transformers illustrated](https://jalammar.github.io/illustrated-transformer/)  
   🔗 [Transformers code](https://sebastianraschka.com/blog/2023/self-attention-from-scratch.html)  
   🔗 [Attention is all you need](https://arxiv.org/pdf/1706.03762)  
@@ -11,7 +11,7 @@
   🔗 [A Visual Guide to MoE](https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-mixture-of-experts)  
   🔗 [Understanding Mixture of Experts: Building a MoE Model with PyTorch](https://medium.com/@prateeksikdar/understanding-mixture-of-experts-building-a-moe-model-with-pytorch-dd373d9db81c)
 
-- **Architectures**:  
+- **Architectures**  
   🔗 [HF LM](https://huggingface.co/course/chapter1)  
   🔗 [Understanding Causal LLM’s, Masked LLM’s, and Seq2Seq](https://medium.com/%40tom_21755/understanding-causal-llms-masked-llm-s-and-seq2seq-a-guide-to-language-model-training-d4457bbd07fa)  
   🔗 [HF Encoder-Decoder](https://huggingface.co/learn/llm-course/en/chapter1/6)
@@ -25,13 +25,13 @@
   🔗 [GloVe](https://aclanthology.org/D14-1162/)  
   🔗 [FastText](https://arxiv.org/abs/1607.04606)
 
-- **Layers and Activations**:   
+- **Layers and Activations**   
   🔗 [Layer Normalization](https://medium.com/@aisagescribe/ace-ai-interview-series-8-what-is-the-common-normalization-method-in-llm-training-18e559f46e08)  
   🔗 [Feed-Forward](https://sebastianraschka.com/blog/2023/transformer-feedforward.html)  
   🔗 [Positional Encoding](https://codelabsacademy.com/ru/news/roformer-enhanced-transformer-with-rotary-position-embedding-2024-5-30/)  
   🔗 [Dropout](https://habr.com/ru/companies/wunderfund/articles/330814/)  
 
-- **Models**:  
+- **Models**  
   🔗 [BERT](https://huggingface.co/blog/bert-101)  
   🔗 [GPT-3](https://dugas.ch/artificial_curiosity/GPT_architecture.html)  
   🔗 [T5](https://medium.com/40gagangupta_82781understanding-the-t5-model-a-comprehensive-guide-b4d5c02c234b)  
@@ -60,20 +60,20 @@
   🔗 [Adapters](https://magazine.sebastianraschka.com/p/finetuning-llms-with-adapters#:~:text=The%20idea%20of%20parameter%2Defficient,the%20pretrained%20LLM%20remain%20frozen.)  
   🔗 [Domain Adaptation and Comparison]()
 
-- Alignment  
+- **Alignment**  
   🔗 [InstuctGPT](https://arxiv.org/abs/2203.02155)  
   🔗 [RLHF](https://huggingface.co/blog/rlhf)  
   🔗 [DPO](https://huggingface.co/blog/pref-tuning)  
 
-- Low-bit inference: quantization (int8, int4), `bitsandbytes`, `AutoGPTQ`  
+- **Low-bit inference: quantization**  
   🔗 [A Survey on Quantization Methods for Efficient Neural Network Inference](https://arxiv.org/abs/2003.13630)  
-  🔗 []()  
 
-- Инструменты `PEFT`, `Trainer`, `accelerate`, `deepspeed`   
-  🔗 https://github.com/huggingface/accelerate  
-  🔗 https://huggingface.co/docs/transformers/perf_train_gpu_one
+- **Instruments**  
+  🔗 [PEFT](https://huggingface.co/docs/peft/index)  
+  🔗 [Accelerate](https://github.com/huggingface/accelerate)  
+  🔗 [DeepSpeed](https://huggingface.co/docs/accelerate/usage_guides/deepspeed)
 
-- Поддержка длинного контекста (NTK scaling, FlashAttention, LongContext)  
+- **Long context** (NTK scaling, FlashAttention, LongContext)  
   🔗 https://github.com/Dao-AILab/flash-attention  
   🔗 https://huggingface.co/LongChat  
   🔗 https://blog.llamaindex.ai/long-context-llms/

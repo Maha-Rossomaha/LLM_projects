@@ -22,7 +22,7 @@
 - **Скалирование:** Tensor / Pipeline MP (DeepSpeed, Megatron), multi‑GPU NCCL, FP8 pilot.
 - **Автоскейл нагрузок:** FastAPI batch endpoints, concurrency gate, dynamic batch‑size.
 - **Cost‑control:** GPU spot, heterogeneous fleet, scale‑to‑zero.  
-- **Компиляторы и runtime-оптимизаторы:** TensorRT, ONNX Runtime, OpenVINO
+- **Компиляторы и runtime-оптимизаторы:** torch.compile, TensorRT, ONNX Runtime, OpenVINO
 
 ## IV. Облачные и on‑prem платформы
 - **AWS SageMaker / Bedrock, GCP Vertex AI, Azure ML:** endpoints, multi‑model endpoints, traffic‑splitting.
