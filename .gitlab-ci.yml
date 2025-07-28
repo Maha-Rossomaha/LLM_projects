@@ -1,0 +1,17 @@
+stages:
+  - deploy
+
+sync_main_to_github:
+  stage: deploy
+  image: alpine:latest
+  before_script:
+    - apk add --no-cache git openssh
+  script:
+    - git config --global user.name "GitLab CI"
+    - git config --global user.email "ci@example.com"
+    - git clone --depth=1 --branch=main "$CI_REPOSITORY_URL" repo
+    - cd repo
+    - git remote add github "$GITHUB_URL"
+    - git push github main
+  only:
+    - main
