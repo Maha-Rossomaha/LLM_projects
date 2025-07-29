@@ -68,17 +68,21 @@
 - **Low-bit inference: quantization**  
   🔗 [A Survey on Quantization Methods for Efficient Neural Network Inference](https://arxiv.org/abs/2003.13630)  
 
-- **Эффективное обучение**: gradient accumulation, model parallelism (tensor/pipeline), ZeRO stages (DeepSpeed), memory-efficient optimizers
+- **Effective Training**:  
+  🔗 [Gradient Accumulation and Checkpointing](https://aman.ai/primers/ai/grad-accum-checkpoint/)  
+  🔗 [Distributed Data Parallel](https://docs.pytorch.org/tutorials/intermediate/ddp_tutorial.html)  
+  🔗 [Pipeline Parallelism](https://docs.pytorch.org/docs/stable/distributed.pipelining.html)  
+  🔗 [Tensor Parallelism](https://docs.pytorch.org/tutorials/intermediate/TP_tutorial.html)  
+  🔗 [ZeRO stages](https://huggingface.co/docs/accelerate/v0.10.0/en/deepspeed)  
 
 - **Instruments**  
   🔗 [PEFT](https://huggingface.co/docs/peft/index)  
   🔗 [Accelerate](https://github.com/huggingface/accelerate)  
   🔗 [DeepSpeed](https://huggingface.co/docs/accelerate/usage_guides/deepspeed)
 
-- **Long context** (NTK scaling, FlashAttention, LongContext)  
-  🔗 https://github.com/Dao-AILab/flash-attention  
-  🔗 https://huggingface.co/LongChat  
-  🔗 https://blog.llamaindex.ai/long-context-llms/
+- **Long context**  
+  🔗 [NTK Scaling](https://en.wikipedia.org/wiki/Neural_tangent_kernel)  
+  🔗 [Flash Attention](https://github.com/Dao-AILab/flash-attention)  
 
 ---
 
