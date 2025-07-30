@@ -28,13 +28,13 @@ Meta представила семейство **Llama 4** — первые о�
 - Активируются лишь 10–20 % параметров → linearly scalable compute и up to 3× throughput на Blackwell B200 GPU.  
 
 ### 3.2 Длинный контекст  
-- **Sparse Attention + continuation caching** позволяют масштабировать RoPE до 10 М токенов без «обвала» внимания citeturn2search0turn2search4.  
+- **Sparse Attention + continuation caching** позволяют масштабировать RoPE до 10 М токенов без «обвала» внимания.  
 - Needle‑in‑Haystack тесты показывают ~88 % top‑k accuracy на 8 М токенов (Scout).  
 
 ### 3.3 Прочие изменения  
 | Компонент | Llama 3.1 | **Llama 4** | Польза |  
 |-----------|-----------|-------------|--------|  
-| Attention | GQA | **Multi‑Head + Sparse Routing** | экономия памяти ∝ context |  
+| Attention | GQA | **Multi‑Head + Sparse Routing** | экономия памяти, увеличенный context |  
 | FFN | Dense SwiGLU | **MoE SwiGLU** | +качество при тех же FLOP |  
 | Pos. Encoding | RoPE+NTK | **RoPE 2× range + cache** | 10 М контекст |  
 | Quant | FP8 | **INT4/FP6** ready | 1× H100 для Scout |  
