@@ -1,4 +1,4 @@
-## Конспект: Embedding Layer — устройство, суть и реализация
+## Embedding Layer
 
 URL:  
 🔗 [Embedding layer tutorial: A comprehensive guide to neural network representations](https://www.byteplus.com/en/topic/400368)

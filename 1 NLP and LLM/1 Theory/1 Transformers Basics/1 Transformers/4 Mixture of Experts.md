@@ -1,4 +1,4 @@
-# Конспект «Mixture of Experts (MoE)»  
+# Mixture of Experts (MoE)  
 URL:  
 🔗 [Mixture of Experts Explained](https://huggingface.co/blog/moe)  
 🔗 [A Visual Guide to MoE](https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-mixture-of-experts)  

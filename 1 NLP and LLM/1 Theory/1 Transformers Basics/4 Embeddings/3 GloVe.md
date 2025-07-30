@@ -1,4 +1,4 @@
-# Конспект статьи «Global Vectors for Word Representation» (Pennington et al., 2014)
+# Global Vectors for Word Representation
 
 URL:  
 🔗 [«Global Vectors for Word Representation»](https://aclanthology.org/D14-1162/)

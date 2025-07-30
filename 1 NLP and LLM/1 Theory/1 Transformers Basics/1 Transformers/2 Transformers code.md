@@ -1,4 +1,4 @@
-# Конспект «Self-Attention from Scratch» (Sebastian Raschka, 2023)
+# Self-Attention from Scratch
 
 URL:  
 🔗 [Transformers code](https://sebastianraschka.com/blog/2023/self-attention-from-scratch.html)

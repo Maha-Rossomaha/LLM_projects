@@ -1,4 +1,4 @@
-# Подробный конспект: “Attention Is All You Need” (Vaswani et al., 2017)
+# Attention Is All You Need
 
 URL:  
 🔗 [Attention is all you need](https://arxiv.org/pdf/1706.03762)

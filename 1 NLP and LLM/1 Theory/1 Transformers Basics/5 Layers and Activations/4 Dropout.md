@@ -1,4 +1,4 @@
-# Dropout в LLM: Полный Конспект
+# Dropout в LLM
 
 ## 1. Зачем нужен Dropout?
 

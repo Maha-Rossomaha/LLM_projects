@@ -1,4 +1,4 @@
-## Конспект: Byte-level BPE и его реализация на Python
+## Byte-level BPE токенизатор
 
 ## 1. Что такое byte-level BPE?
 
