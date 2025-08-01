@@ -316,16 +316,6 @@ $$
 2. Eсли их нет, то начать можно отсюда:
 [EleutherAI/lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness)
 
-# 6. Валидация качества
-
-## 6.1 Бенчмарки
-
-Наверняка в компании, где вы будете адаптировать модель, уже есть пайплайн бенчмарков.
-
-Но если вдруг нет, то начать можно отсюда:
-
-* [EleutherAI/lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness)
-
 Эта библиотека позволяет запускать популярные задачи вроде:
 
 * LAMBADA
