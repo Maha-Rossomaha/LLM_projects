@@ -1,4 +1,4 @@
-# Конспект: Gemini 2.5 ✨
+# Gemini 2.5
 URL  
  🔗 [Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long Context, and Next Generation Agentic Capabilities](https://arxiv.org/pdf/2507.06261)
 
