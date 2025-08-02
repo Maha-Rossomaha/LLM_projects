@@ -57,6 +57,7 @@
   🔗 [QLoRA 3](https://sebastianraschka.com/blog/2023/peft-qlora.html)  
   🔗 [Prefix Tuning](https://arxiv.org/abs/2101.00190)  
   🔗 [Prompt Tuning](https://arxiv.org/abs/2104.08691)  
+  🔗 [P-tuning v2](https://arxiv.org/abs/2110.07602)  
   🔗 [Adapters](https://magazine.sebastianraschka.com/p/finetuning-llms-with-adapters#:~:text=The%20idea%20of%20parameter%2Defficient,the%20pretrained%20LLM%20remain%20frozen.)  
   🔗 [Domain Adaptation and Comparison]()
 
