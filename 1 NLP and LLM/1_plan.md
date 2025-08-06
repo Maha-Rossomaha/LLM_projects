@@ -46,7 +46,7 @@
 ## II. Файнтюнинг и адаптация моделей
 **Цель:** Уметь адаптировать любую LLM под свою задачу с минимальными затратами.
 
-- **Классический fine-tuning (FP32, full finetune)**  
+- **Classic fine-tuning (FP32, full finetune)**  
   🔗 [Fine Tuning](https://huggingface.co/course/chapter3)  
 
 - **Parameter-efficient tuning**  
@@ -90,12 +90,15 @@
 ## III. Prompt Engineering и контроль генерации
 **Цель:** Проектировать промпты под любые задачи, снижать галлюцинации, обеспечивать стабильность генерации.
 
-- Few-shot, zero-shot, CoT, ReAct, Self-Ask  
-  🔗 https://github.com/dair-ai/Prompt-Engineering-Guide  
-  🔗 https://github.com/openai/openai-cookbook
+- **In-context learning**   
+  🔗 [Zero, One and Few-Shot](https://arxiv.org/abs/2301.00234)  
+  🔗 [Chain of Thought](https://arxiv.org/abs/2201.11903)  
+  🔗 [SelfAsk](https://arxiv.org/abs/2210.03350)  
+  🔗 [ReAct](https://arxiv.org/abs/2210.03629)  
 
 - Параметры decoding: temperature, top_p, repetition_penalty  
-  🔗 https://platform.openai.com/docs/guides/text-generation
+  🔗 [Decoding Parameters](https://platform.openai.com/docs/guides/text-generation)  
+  🔗 [Decoding Methods](http://arxiv.org/html/2402.06925v3)  
 
 - Prompt compression, reranking, robustness  
   🔗 https://arxiv.org/abs/2309.02772 (Prompt Compression for LLMs)
