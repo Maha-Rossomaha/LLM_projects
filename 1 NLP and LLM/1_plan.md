@@ -96,40 +96,39 @@
   🔗 [SelfAsk](https://arxiv.org/abs/2210.03350)  
   🔗 [ReAct](https://arxiv.org/abs/2210.03629)  
 
-- Параметры decoding: temperature, top_p, repetition_penalty  
+- **Decoding**  
   🔗 [Decoding Parameters](https://platform.openai.com/docs/guides/text-generation)  
-  🔗 [Decoding Methods](http://arxiv.org/html/2402.06925v3)  
+  🔗 [Decoding Algorithms](http://arxiv.org/html/2402.06925v3)  
 
-- Prompt compression, reranking, robustness  
-  🔗 https://arxiv.org/abs/2309.02772 (Prompt Compression for LLMs)
+- **Reasoning**  
+  🔗 [Tree of Thought](https://arxiv.org/abs/2305.10601)  
+  🔗 [Multi-hop Reasoning](https://www.moveworks.com/us/en/resources/ai-terms-glossary/multi-hop-reasoning)
 
-- Reasoning стратегии: Chain-of-prompt, tree-of-thought, multi-hop reasoning  
-  🔗 https://arxiv.org/abs/2305.10601 (Tree of Thought)  
-  🔗 https://github.com/kyegomez/tree-of-thoughts
-
-- Prompt evaluation  
-  🔗 https://github.com/promptfoo/promptfoo  
-  🔗 https://github.com/open-eval/open-eval
+- **Prompt evaluation**  
+  🔗 [Promptfoo](https://github.com/promptfoo/promptfoo)  
+  🔗 [OpenAI Evals](https://github.com/open-eval/open-eval)
 
 ---
 
 ## IV. Embeddings и векторные представления
 **Цель:** Строить и использовать dense-представления для поиска, рекомендаций, кластеризации, дедупликации.
 
-- Sentence embeddings, contextual embeddings, dense vs sparse  
-  🔗 https://www.sbert.net/
+- **Text Vector Representations** Sentence embeddings, contextual embeddings, dense vs sparse  
+  🔗 [Dense and Sparse Embeddings](https://mlokhandwalas.medium.com/dense-and-sparse-embeddings-a-comprehensive-overview-c5f6473ee9d0)  
+  🔗 [Contextual Embeddings](https://arxiv.org/abs/2003.07278)  
+  🔗 [Sentence Embeddings](https://cohere.com/llmu/sentence-word-embeddings)    
 
-- Использование моделей: GTE, BGE, E5, MiniLM, Cohere Embed, Ada  
-  🔗 https://huggingface.co/intfloat/e5-large-v2  
-  🔗 https://huggingface.co/BAAI/bge-base-en  
-  🔗 https://cohere.com/docs/embed
-
-- Triplet loss, contrastive learning  
+- **Adaptation** Triplet loss, contrastive learning  
   🔗 https://www.pinecone.io/learn/series/fine-tune-llm/contrastive-learning/
 
 - Метрики расстояний, кластеризация  
   🔗 https://scikit-learn.org/stable/modules/clustering.html  
   🔗 https://umap-learn.readthedocs.io/en/latest/
+
+- Использование моделей: GTE, BGE, E5, MiniLM, Cohere Embed, Ada, SBERT  
+  🔗 https://huggingface.co/intfloat/e5-large-v2  
+  🔗 https://huggingface.co/BAAI/bge-base-en  
+  🔗 https://cohere.com/docs/embed
 
 ---
 
