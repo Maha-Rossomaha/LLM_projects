@@ -131,10 +131,15 @@
   🔗 [DAPT and TAPT](https://ceur-ws.org/Vol-2723/short33.pdf)  
   🔗 [Inductive Bias](https://arxiv.org/html/2402.18426v1)  
 
-- Использование моделей: GTE, BGE, E5, MiniLM, Cohere Embed, Ada, SBERT  
-  🔗 https://huggingface.co/intfloat/e5-large-v2  
-  🔗 https://huggingface.co/BAAI/bge-base-en  
-  🔗 https://cohere.com/docs/embed
+- **Embedding Models**  
+  🔗 [GTE](https://arxiv.org/abs/2308.03281)  
+  🔗 [BGE](https://arxiv.org/abs/2402.03216)  
+  🔗 [E5](https://arxiv.org/abs/2212.03533)  
+  🔗 [MiniLM](https://arxiv.org/abs/2002.10957)  
+  🔗 [Cohere Embed]()  
+  🔗 [Ada]()  
+  🔗 [SBERT]()  
+
 
 ---
 
