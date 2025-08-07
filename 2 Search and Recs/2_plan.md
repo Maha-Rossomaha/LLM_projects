@@ -29,6 +29,14 @@
 - Pipeline: retriever → reranker → LLM‑генератор.  
 - **Dynamic context selection:** кластеризация top‑K, маржинальная полезность.  
 - Multi‑hop / memory‑augmented RAG; answer re‑ranking.
+- Conversational retrieval:
+  - Multi-turn query refinement (пошаговое уточнение запросов с учётом истории диалога).
+  - Context carry-over — сохранение и использование диалогового контекста для формирования следующего запроса в retriever.
+  - Query planning: разбиение задачи на подзапросы и их последовательное выполнение.
+  - Интеграция с reranker’ами и multi-hop RAG.
+  - Метрики: groundedness на сессии, cumulative recall@K, доля релевантных уточнений.
+
+
 
 ## V. Online‑feedback и bandits
 - **Explore‑Exploit:** Thompson Sampling, ε‑greedy, UCB — ротация кандидатов.  

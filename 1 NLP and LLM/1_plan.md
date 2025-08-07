@@ -145,21 +145,23 @@
 ## V. Анализ и отладка моделей
 **Цель:** Понимать поведение модели, отлавливать ошибки, снижать токсичность и галлюцинации.
 
-- LM Evaluation  
-  🔗 https://github.com/EleutherAI/lm-evaluation-harness  
-  🔗 https://github.com/open-eval/open-eval
+- **Model Interpretation**  
+  🔗 [Attention tracing and BertViz](https://medium.com/@GaryFr0sty/visualize-attention-scores-of-llms-with-bertviz-3deb94b455b3)    
+  🔗 [Token-Level Logit Analysis](https://arxiv.org/abs/1706.04599)  
+  🔗 [Layer-Wise Relevance Propagation](https://arxiv.org/abs/1509.06321)  
+  🔗 [Integrated Gradients](https://arxiv.org/abs/1703.01365)  
+  🔗 [SHAP GitHub](https://github.com/shap/shap)  
+  🔗 [Captum (PyTorch Explainability)](https://captum.ai/)
 
-- RAG evaluation  
-  🔗 https://github.com/explodinggradients/ragas  
-  🔗 https://github.com/facebookresearch/RA-Eval
+- **Diagnosis of Errors and Hallucinations**  
+  🔗 [Hallucination Sources](https://medium.com/@tam.tamanna18/understanding-llm-hallucinations-causes-detection-prevention-and-ethical-concerns-914bc89128d0)  
+  🔗 [Faithfulness-tests](https://arxiv.org/abs/2305.18029)  
+  🔗 [Toxicity Bias Tests](https://medium.com/@rajneeshjha9s/tools-to-identify-and-mitigate-bias-toxicity-in-llms-b34e95732241)
 
-- Attention tracing, token-level logit analysis  
-  🔗 https://github.com/cdpierse/transformers-interpret  
-  🔗 https://github.com/jessevig/bertviz
-
-- Adversarial prompting, hallucination reduction  
-  🔗 https://github.com/thunlp/OpenPrompt  
-  🔗 https://arxiv.org/abs/2305.11738 (Faithfulness Benchmarks)
+- **Тестирование устойчивости (robustness)**  
+  🔗 [Adversarial Prompting](https://www.promptingguide.ai/risks/adversarial)  
+  🔗 [Prompt Mutations](https://elsworth.phd/Formalisms/A-Survey-of-Prompt-Mutations)  
+  🔗 [Stress Tests Long Inputs](https://arxiv.org/abs/2307.03172)
 
 ---
 
