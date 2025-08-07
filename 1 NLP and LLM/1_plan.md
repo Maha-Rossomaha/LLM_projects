@@ -137,9 +137,8 @@
   🔗 [E5](https://arxiv.org/abs/2212.03533)  
   🔗 [MiniLM](https://arxiv.org/abs/2002.10957)  
   🔗 [Cohere Embed]()  
-  🔗 [Ada]()  
-  🔗 [SBERT]()  
-
+  🔗 [Ada](https://arxiv.org/abs/2401.12421)  
+  🔗 [SBERT](https://arxiv.org/abs/1908.10084)  
 
 ---
 
