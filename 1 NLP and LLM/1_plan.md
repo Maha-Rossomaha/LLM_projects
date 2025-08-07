@@ -113,17 +113,23 @@
 ## IV. Embeddings и векторные представления
 **Цель:** Строить и использовать dense-представления для поиска, рекомендаций, кластеризации, дедупликации.
 
-- **Text Vector Representations** Sentence embeddings, contextual embeddings, dense vs sparse  
+- **Text Vector Representations**   
   🔗 [Dense and Sparse Embeddings](https://mlokhandwalas.medium.com/dense-and-sparse-embeddings-a-comprehensive-overview-c5f6473ee9d0)  
   🔗 [Contextual Embeddings](https://arxiv.org/abs/2003.07278)  
   🔗 [Sentence Embeddings](https://cohere.com/llmu/sentence-word-embeddings)    
 
 - **Adaptation** Triplet loss, contrastive learning  
-  🔗 https://www.pinecone.io/learn/series/fine-tune-llm/contrastive-learning/
+  🔗 [Contrastive Learning](https://medium.com/@sulbha.jindal/new-llm-learning-method-contrastive-learning-19425fda59a6)  
+  🔗 [Triplet Loss](https://www.v7labs.com/blog/triplet-loss)  
+  🔗 [Info-NCE](https://arxiv.org/pdf/2402.05369)  
+  🔗 [Negatives Mining](https://arxiv.org/pdf/2407.15831)  
 
-- Метрики расстояний, кластеризация  
-  🔗 https://scikit-learn.org/stable/modules/clustering.html  
-  🔗 https://umap-learn.readthedocs.io/en/latest/
+- **Clustering**  
+  🔗 [Clustering](https://scikit-learn.org/stable/modules/clustering.html)  
+  🔗 [Text Clustering Algorithms and Metrics](https://arxiv.org/html/2403.15112v5)  
+  🔗 [UMAP](https://umap-learn.readthedocs.io/en/latest/)  
+  🔗 [DAPT and TAPT](https://ceur-ws.org/Vol-2723/short33.pdf)  
+  🔗 [Inductive Bias](https://arxiv.org/html/2402.18426v1)  
 
 - Использование моделей: GTE, BGE, E5, MiniLM, Cohere Embed, Ada, SBERT  
   🔗 https://huggingface.co/intfloat/e5-large-v2  
