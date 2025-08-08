@@ -124,7 +124,7 @@
 
 **Используется:**
 
-- На проде у OpenAI (до 2× ускорение), TGI, Mistral Inference
+- На проде у OpenAI (до 2$\times$ ускорение), TGI, Mistral Inference
 
 **Плюсы:**
 

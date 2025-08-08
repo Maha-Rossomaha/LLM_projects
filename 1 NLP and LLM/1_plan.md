@@ -116,13 +116,20 @@
 - **Text Vector Representations**   
   🔗 [Dense and Sparse Embeddings](https://mlokhandwalas.medium.com/dense-and-sparse-embeddings-a-comprehensive-overview-c5f6473ee9d0)  
   🔗 [Contextual Embeddings](https://arxiv.org/abs/2003.07278)  
-  🔗 [Sentence Embeddings](https://cohere.com/llmu/sentence-word-embeddings)    
+  🔗 [Sentence Embeddings](https://cohere.com/llmu/sentence-word-embeddings)  
 
 - **Adaptation** Triplet loss, contrastive learning  
   🔗 [Contrastive Learning](https://medium.com/@sulbha.jindal/new-llm-learning-method-contrastive-learning-19425fda59a6)  
   🔗 [Triplet Loss](https://www.v7labs.com/blog/triplet-loss)  
   🔗 [Info-NCE](https://arxiv.org/pdf/2402.05369)  
+  🔗 [Supervised Contrastive Loss](https://arxiv.org/abs/2004.11362)  
   🔗 [Negatives Mining](https://arxiv.org/pdf/2407.15831)  
+  🔗 [Hard and Soft Negatives]()  
+  🔗 [ACNE: Asymmetric Contrastive Negative Example Mining]()  
+  🔗 [MoCo and Memory Bank](https://arxiv.org/html/2501.16360v1)  
+  🔗 [Inductive Bias]()  
+
+
 
 - **Clustering**  
   🔗 [Clustering](https://scikit-learn.org/stable/modules/clustering.html)  

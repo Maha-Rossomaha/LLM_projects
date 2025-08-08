@@ -39,7 +39,7 @@
 
 - Если страница — скан, а OCR не сработал → пустой текст → мусорный embedding
 - Можно использовать Layout-aware модели (например, LayoutLMv3), которые учитывают bounding boxes
-- Можно отдельно обрабатывать OCR confidence и заменять пустые страницы на learnable [EMPTY] embedding
+- Можно отдельно обрабатывать OCR confidence и заменять пустые страницы на learnable `[EMPTY]` embedding
 
 ### Пример применения:
 
@@ -56,7 +56,7 @@
 - **ResNet или CNN** извлекает признаки из изображения страницы
 - **OCR-модуль** (например, Tesseract или TrOCR) извлекает текст
 - **BERT** (или LayoutLM) обрабатывает текст и spatial layout
-- Fusion: объединение векторов (concatenation, cross-attention, MLP)
+- **Fusion**: объединение векторов (concatenation, cross-attention, MLP)
 
 ### Варианты fusion:
 

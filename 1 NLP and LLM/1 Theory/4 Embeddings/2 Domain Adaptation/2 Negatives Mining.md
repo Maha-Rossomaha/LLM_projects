@@ -129,16 +129,18 @@ $$
 
 **ACNE (Asymmetric Contrastive Negative Example mining)** — это стратегия негативного сэмплирования, при которой используется **асимметрия** между сторонами запроса и документа в contrastive learning.
 
-Вместо использования пар (q, d) симметрично с обеих сторон, ACNE применяет **одностороннее сэмплирование негативов** — например, используя только эмбеддинг запроса (`q`) как якорь и выбирая трудные негативы среди документов (`d⁻`) по близости в embedding space.
+Вместо использования пар (`q`, `d`) симметрично, как это делается в классическом InfoNCE, ACNE применяет одностороннее сэмплирование негативов.  
+Здесь якорем выступает только эмбеддинг запроса (`q`), а негативы выбираются среди документов (`d⁻`), причём подбираются именно «трудные» — те, что находятся близко к `q` в embedding space
 
 ### 3.1 Мотивация
 
 * В классическом InfoNCE все примеры обрабатываются симметрично: запрос и документ взаимозаменяемы.
-* Однако в retrieval-сценариях, особенно при использовании **разных энкодеров для** `q`**и** `d` (асимметричный bi-encoder), такая симметрия может быть нежелательна.
-* ACNE позволяет:
+* Однако в retrieval-сценариях, особенно при использовании **разных энкодеров для** `q`**и** `d` (асимметричный bi-encoder), такая симметрия может мешать: запрос и документ играют разные роли.
 
-  * Избегать ложной симметрии между `q` и `d`
-  * Сконцентрироваться на "сложных" негативных документах по отношению к одному якорю
+* Подход ACNE даёт три преимущества:
+
+  * Убирает искусственную симметрию между `q` и `d`
+  * Фокусируется на сложных негативных документах для конкретного запроса
   * Повысить устойчивость модели и улучшить градиенты
 
 ### 3.2 Как работает ACNE
@@ -155,7 +157,7 @@ $$
 Для запроса `q`:
 
 * **Positive:** `d⁺`
-* **Negatives:** выбираются среди всех документов, \*\*которые близки к \*\*`, но не являются `
+* **Negatives:** выбираются среди всех документов, **которые близки к** `q`, **но не являются** `d⁺`.
 
 Для самого документа `d⁺` такие негативы не рассматриваются — они подбираются только относительно `q`, то есть **асимметрично**.
 
@@ -180,56 +182,216 @@ $$
 ---
 
 ## 4. MoCo: Momentum Contrast
-**MoCo (Momentum Contrast**) — это метод contrastive learning, ориентированный на эффективное обучение представлений при большом числе негативных примеров, особенно в условиях ограниченного размера батча.
-Ключевые компоненты:
-- **Два энкодера:** `encoder_q` (query encoder) и `encoder_k` (key encoder)
 
-* **Обновление** `encoder_k` **по EMA:**
+**Идея.** MoCo поддерживает *динамический словарь* ключей (keys) и обучает энкодер запросов (queries) так, чтобы сближать представления позитивной пары и отталкивать от них представления негативных примеров. Словарь реализован как очередь (Memory Bank), а второй энкодер обновляется не градиентом, а *экспоненциальным сглаживанием* параметров (EMA, momentum update). Это позволяет иметь десятки тысяч негативов без гигантского batch size и сохранять согласованность между $q$ и $k$.
 
-$$
-\texttt{encoder}_k \leftarrow m \cdot \texttt{encoder}_k + (1 - m) \cdot \texttt{encoder}_q
-$$
+### 4.1 Компоненты
 
-где `m` — коэффициент импульса (обычно 0.999)
-
-* **Memory Bank** — буфер хранимых негативных эмбеддингов, полученных с предыдущих шагов
-
-### 4.1 Зачем нужен momentum encoder?
-
-Если использовать один encoder и постоянно обновлять параметры, негативы в InfoNCE быстро устаревают и становятся несогласованными. MoCo решает это так:
-
-* `encoder_q` обучается градиентами
-* `encoder_k` не обновляется напрямую, а **медленно догоняет** `encoder_q`, благодаря чему:
-
-  * Поддерживается согласованность между ключами (`keys`) и query
-  * Негативные примеры становятся более стабильными и полезными
-
-### 4.2 Что такое Memory Bank
-
-**Memory Bank** — это очередь фиксированной длины, в которую после каждой итерации добавляются новые эмбеддинги `key`, а старые удаляются.
-
-#### 4.2.1 Назначение:
-
-* Обеспечивает **большое множество негативов** для каждого `query`
-* Снижает необходимость увеличения batch size
-
-#### 4.2.2 Принцип работы:
-
-1. Каждый `query` сравнивается с:
-
-   * Позитивом (`positive key`) из текущей пары
-   * Множеством `negative keys` из Memory Bank (например, 65,536 векторов)
-2. Loss считается по InfoNCE:
+* **Два энкодера:** $f_q$ (query) и $f_k$ (key). Архитектуры совпадают, но лишь $f_q$ получает градиенты.
+* **Projection head** $g(\cdot)$: обычно 2‑слойная MLP; итоговые векторы нормируются до единичной нормы: $q = \operatorname{norm}(g(f_q(x_q)))$, $k = \operatorname{norm}(g(f_k(x_k)))$.
+* **Momentum‑обновление** параметров $\theta_k$ из $\theta_q$:
 
 $$
-L = -\log\left( \frac{\exp(\text{sim}(q, k^+))}{\exp(\text{sim}(q, k^+)) + \sum_j \exp(\text{sim}(q, k_j^-))} \right)
+\theta_k \leftarrow m\,\theta_k + (1 - m)\,\theta_q, \quad m \in [0,1)\;.
 $$
 
-### 4.3 Преимущества MoCo
+* **Memory Bank (очередь)** фиксированного размера $K$: хранит последние $K$ ключей ${k_j^-}$.
 
-* **Масштабируемость:** можно использовать десятки тысяч негативов без увеличения размера батча
-* **Устойчивость:** momentum encoder обеспечивает стабильность ключей
-* **Гибкость:** применим к разным типам энкодеров (vision, text, audio)
+### 4.2 Почему нужен momentum‑encoder?
+
+Если ключи и запросы считаются одной и той же быстро меняющейся моделью, «негативы» теряют согласованность от шага к шагу → градиенты шумные. Медленно обновляемый $f_k$ даёт **стабильные ключи** на протяжении многих итераций, поэтому:
+
+* *больше информации в каждом шаге* (тысячи негативов из очереди);
+* *лучше условие оптимизации* (менее «дрожащая» цель).
+
+### 4.3 Memory Bank (очередь)
+
+Очередь $\mathcal{Q}$ хранит $K$ последних нормированных ключей. На каждом шаге **enqueue** новых $k_i$ и **dequeue** самых старых, сохраняя размер $K$. Благодаря этому каждый $q_i$ сравнивается не только с текущими $k_i^+$, но и с большим пулом $k_j^-$ из прошлых шагов.
+
+### 4.4 Обучающий шаг
+
+1. Сгенерировать две аугментации одного примера: $x_q, x_k$.
+
+2. Посчитать представления:
+
+* $q_i = \operatorname{norm}(g(f_q(x_{q,i})))$;
+* $k_i = \operatorname{norm}(g(f_k(x_{k,i})))$ (без градиента).
+
+3. Логиты сходства (скалярное произведение при $\lVert q\rVert=\lVert k\rVert=1$ эквивалентно косинусу) и температура $\tau$:
+
+* $\ell_i^+ = (q_i\cdot k_i)/\tau$,
+* $\ell_{ij}^- = (q_i\cdot k_j^-)/\tau$, где $k_j^- \in \mathcal{Q}$.
+
+4. **InfoNCE‑лосс** для батча размера $B$:
+
+$$
+L = -\frac{1}{B}\sum_{i=1}^B \log
+\frac{\exp(\ell_i^+)}{\exp(\ell_i^+) + \sum_{j=1}^{K} \exp(\ell_{ij}^-)}\;.
+$$
+
+5. Backprop только через $f_q$ и его head; $f_k$ — без градиента.
+
+6. **EMA‑обновление** $\theta_k$ из $\theta_q$.
+
+7. **Обновить очередь:** добавить ${k_i}_{i=1}^B$ и удалить $B$ самых старых ключей.
+
+### 4.5 Гиперпараметры и «рабочие» значения
+
+* Размер очереди $K$: 16k–65k. Слишком маленький $K$ → мало «разнообразных» негативов; слишком большой — рост памяти и устаревание ключей.
+* Температура $\tau$: 0.07 — хороший старт. Меньше $\tau$ → жёстче штраф, но риск переобучения на «случайные» различия.
+* Коэффициент импульса $m$: 0.999–0.9995. Слишком маленький $m$ разрушает «стабильность» ключей, слишком большой — делает $f_k$ инертным.
+* Head: 2‑слойная MLP с нелинейностью; нормализация выходов обязательна.
+* Аугментации: сильные цветовые/геометрические (для vision); для текста — дропаут токенов, перефраз, маскирование.
+
+### 4.6 Реализация (минимальный каркас, PyTorch)
+
+```python
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+def mean_pooling(
+    last_hidden_state: torch.Tensor,
+    attention_mask: torch.Tensor
+) -> torch.Tensor:
+    # last_hidden_state: (B, L, H); attention_mask: (B, L)
+    mask = attention_mask.unsqueeze(-1).type_as(last_hidden_state)  # (B, L, 1)
+    summed = (last_hidden_state * mask).sum(dim=1)                   # (B, H)
+    denom = mask.sum(dim=1).clamp(min=1e-6)                          # (B, 1)
+    return summed / denom
+
+class TextEncoder(nn.Module):
+    """
+    Обёртка над LLM/трансформером, возвращающая sentence embedding через pooling + MLP head.
+    Ожидается backbone с сигнатурой forward(input_ids, attention_mask) -> last_hidden_state.
+    Примеры: HF AutoModel (без LM Head), любой encoder-only/decoder-only с .config.hidden_size.
+    """
+    def __init__(self, backbone: nn.Module, out_dim: int = 128):
+        super().__init__()
+        self.backbone = backbone
+        hidden_size = (
+            getattr(backbone, 'hidden_size', None)
+            or getattr(getattr(backbone, 'config', None), 'hidden_size', None)
+        )
+        if hidden_size is None:
+            raise ValueError("Не удалось определить hidden_size у backbone")
+        self.proj = nn.Sequential(
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(inplace=True),
+            nn.Linear(hidden_size, out_dim),
+        )
+
+    @torch.no_grad()
+    def encode_tokens(
+        self, 
+        input_ids: torch.Tensor,
+        attention_mask: torch.Tensor
+    ) -> torch.Tensor:
+        # Вычисление эмбеддинга без proj (например, для отладки)
+        last_hidden = self.backbone(
+            input_ids=input_ids,
+            attention_mask=attention_mask
+        ).last_hidden_state
+        sent = mean_pooling(last_hidden, attention_mask)
+        return sent
+
+    def forward(
+        self, 
+        input_ids: torch.Tensor,
+        attention_mask: torch.Tensor
+    ) -> torch.Tensor:
+        last_hidden = self.backbone(
+            input_ids=input_ids,
+            attention_mask=attention_mask
+        ).last_hidden_state
+        sent = mean_pooling(last_hidden, attention_mask)
+        z = self.proj(sent)
+        return F.normalize(z, dim=1)
+
+class MoCo(nn.Module):
+    def __init__(
+        self, 
+        backbone_q: nn.Module, 
+        backbone_k: nn.Module, 
+        dim: int = 128,
+        K: int = 65536, 
+        m: float = 0.999, 
+        T: float = 0.07
+    ):
+        super().__init__()
+        self.encoder_q = TextEncoder(backbone_q, out_dim=dim)
+        self.encoder_k = TextEncoder(backbone_k, out_dim=dim)
+        # Инициализация параметров ключевого энкодера
+        for p_k, p_q in zip(self.encoder_k.parameters(), self.encoder_q.parameters()):
+            p_k.data.copy_(p_q.data)
+            p_k.requires_grad = False  # ключевой энкодер — без градиента
+        self.m = m
+        self.T = T
+        self.K = K
+        # Очередь ключей (dim, K) и указатель
+        self.register_buffer("queue", F.normalize(torch.randn(dim, K), dim=0))
+        self.register_buffer("queue_ptr", torch.zeros(1, dtype=torch.long))
+
+    @torch.no_grad()
+    def _momentum_update_key_encoder(self):
+        for p_k, p_q in zip(self.encoder_k.parameters(), self.encoder_q.parameters()):
+            p_k.data = p_k.data * self.m + p_q.data * (1. - self.m)
+
+    @torch.no_grad()
+    def _dequeue_and_enqueue(self, keys: torch.Tensor):
+        # keys: (B, dim)
+        keys = keys.detach()
+        B = keys.shape[0]
+        ptr = int(self.queue_ptr)
+        assert self.K % B == 0, "K должно делиться на batch size для простоты"
+        self.queue[:, ptr:ptr+B] = keys.T
+        ptr = (ptr + B) % self.K
+        self.queue_ptr[0] = ptr
+
+    def forward(self, batch_q: dict, batch_k: dict):
+        """
+        batch_q/batch_k: dict с тензорами 'input_ids' и 'attention_mask', размерности (B, L).
+        Пример подготовки батча: токенизатор HF с padding/truncation, одинаковая L.
+        """
+        # 1) query-ветка (с градиентом)
+        q = self.encoder_q(batch_q['input_ids'], batch_q['attention_mask'])  # (B, dim)
+
+        # 2) EMA-обновление и ключи без градиента
+        with torch.no_grad():
+            self._momentum_update_key_encoder()
+            k = self.encoder_k(batch_k['input_ids'], batch_k['attention_mask'])  # (B, dim)
+
+        # 3) логиты: положительный и отрицательные
+        l_pos = torch.einsum('bd,bd->b', q, k).unsqueeze(1)            # (B, 1)
+        l_neg = torch.einsum('bd,dk->bk', q, self.queue.clone())       # (B, K)
+        logits = torch.cat([l_pos, l_neg], dim=1) / self.T             # (B, 1+K)
+        labels = torch.zeros(logits.size(0), dtype=torch.long, device=logits.device)
+        loss = F.cross_entropy(logits, labels)
+
+        # 4) обновить очередь новыми ключами
+        self._dequeue_and_enqueue(k)
+        return loss
+```
+
+> Заметки к коду: (i) нормализация выходов — критична; (ii) **нет** градиента через $k$ и очередь.
+
+### 4.7 Практические нюансы
+
+* **BatchNorm.** В ключевой ветке BN‑статистики не должны «подмешиваться» из текущего батча с градиентом. Безопаснее: SyncBN или «перемешивание» батча перед проходом ключевой ветки; либо заменить BN на GN/IN.
+* **Multi‑GPU.** Очередь — *глобальная*: собирайте ключи со всех устройств, иначе каждый процесс будет видеть только локальные негативы.
+* **Сходимость.** При слишком маленьком $K$ и/или большом $\tau$ модель может «смягчаться» и терять различающую способность; при слишком жёстких аугментациях и маленьком $\tau$ возможна нестабильность.
+* **Домены.** Для текста/мультимодальности позитив — «парные» примеры (например, $(\text{text}, \text{image})$); аугментации должны сохранять семантику.
+
+### 4.8 Эволюция вариантов
+
+* **MoCo v1 → v2.** Усиленные аугментации и MLP‑голова заметно поднимают качество; базовые гиперпараметры: $m\approx0.999$, $\tau\approx0.07$, $K\in[16k, 65k]$.
+* **MoCo с ViT (часто называют v3).** Те же принципы, но нюансы: чувствительность к $m$ и к стратегии обучения ViT (warm‑up, weight decay). Очередь может быть меньше из‑за более «сильной» архитектуры.
+* **Супервизированный вариант.** Позитивами считаются все примеры одного класса (не только две аугментации одного образца), что особенно полезно при наличии меток.
+
+### 4.10 Где MoCo особенно уместен
+
+* Ограниченная память на устройстве (не потянем batch 8k–32k, как в SimCLR), но нужна высокая «энтропия» негативов.
+* Потоковая/инкрементальная загрузка данных: очередь естественным образом «обновляет» негативы без перестройки батчей.
 
 ### 4.4 Пример применения
 
@@ -238,6 +400,3 @@ $$
 * batch size = 128
 * memory bank = 65,536
 * каждый `query` получает обучающий сигнал по 1 позитиву + 65,535 негативам
-
----
-
