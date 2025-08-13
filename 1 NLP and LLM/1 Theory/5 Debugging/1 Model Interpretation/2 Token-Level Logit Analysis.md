@@ -15,7 +15,7 @@
 Процесс:
 
 1. Модель обрабатывает вход и выдаёт логиты: $\text{logits} \in \mathbb{R}^{V}$, где $V$ — размер словаря.
-2. Применяется softmax: $p_i = \frac{e^{\text{logits}i}}{\sum{j} e^{\text{logits}_j}}$.
+2. Применяется softmax: $p_i = \frac{e^{\text{logits}_i}}{\sum_{j} e^{\text{logits}_j}}$.
 3. Выбирается токен с максимальной вероятностью (или по правилам сэмплинга — temperature, top-k, top-p).
 
 ## 3. Зачем это нужно
