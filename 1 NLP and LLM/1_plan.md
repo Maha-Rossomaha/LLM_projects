@@ -186,24 +186,6 @@
 
 ---
 
-## VII. Дополнительно (опционально)
-- Сравнение моделей  
-  🔗 https://paperswithcode.com/llm-leaderboard  
-  🔗 https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard
-
-- Контекстная компрессия  
-  🔗 https://arxiv.org/abs/2309.02772  
-  🔗 https://arxiv.org/abs/2307.03172 (Selectively forgetting with token pruning)
-
-- Безопасность и приватность  
-  🔗 https://arxiv.org/abs/2306.15595 (PII Risk in LLMs)
-
-- Датасеты и аннотация  
-  🔗 https://huggingface.co/docs/datasets/index  
-  🔗 https://github.com/facebookresearch/dynabench
-
----
-
   ## VIII. Дорожная карта компетенций (12 недель)
 
 | Недели | Ключевая цель | Результат / метрика |
