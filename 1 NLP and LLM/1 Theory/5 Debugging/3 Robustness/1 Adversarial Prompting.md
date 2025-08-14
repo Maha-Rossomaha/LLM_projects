@@ -28,7 +28,7 @@
 
 ### 4.1 Автоматизированные
 
-* Генерация атак с помощью специализированных фреймворков (например, [AdvBench](https://github.com/llm-security/AdvBench)).
+* Генерация атак с помощью специализированных фреймворков (например, [AdvBench](https://github.com/NetSPI/Open-LLM-Security-Benchmark)).
 * Использование LLM для создания собственных adversarial prompt’ов.
 
 ### 4.2 Ручные

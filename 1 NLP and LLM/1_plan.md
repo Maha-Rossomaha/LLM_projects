@@ -175,18 +175,14 @@
 ## VI. LLM в системах поиска и рекомендаций
 **Цель:** Применять всё вышеописанное в end-to-end пайплайнах.
 
-- Semantic Search (DenseRetriever, reranker)  
-  🔗 https://www.pinecone.io/learn/semantic-search/  
-  🔗 https://sebastianraschka.com/blog/2023/retrieval-reranking.html
+- **Semantic Search**   
+  🔗 [Semantic Search](https://www.pinecone.io/learn/semantic-search/)  
+  🔗 [Retrieval Reranking](https://sebastianraschka.com/blog/2023/retrieval-reranking.html)  
+  🔗 [Hybrid Search](https://www.trychroma.com/docs/hybrid-search)
 
-- Hybrid Search  
-  🔗 https://www.trychroma.com/docs/hybrid-search
+- **Answer generation**  
+  🔗 [LangChain Generation](https://github.com/langchain-ai/langchain/blob/master/cookbook/search_rag.md)
 
-- LangChain search example  
-  🔗 https://github.com/langchain-ai/langchain/blob/master/cookbook/search_rag.md
-
-- MTEB leaderboard  
-  🔗 https://huggingface.co/spaces/mteb/leaderboard
 
 ---
 
