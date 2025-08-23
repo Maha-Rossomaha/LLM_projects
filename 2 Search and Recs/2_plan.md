@@ -9,6 +9,14 @@
 - **Sparse сигнатуры:** BM25, SPLADE, pruning stop‑words, lexical fallback.  
 - **Hybrid fusion:** Reciprocal Rank Fusion (RRF), формула $w_{lex}·BM25 + w_{dense}·\cos$.  
 - **ANN индексация:** IVF‑PQ (`nlist`, `nprobe`, PQ M/бит) и HNSW (`ef`, `M`), ScaNN, multi‑shard.  
+  🔗 [HNSW](https://habr.com/ru/companies/vk/articles/338360/)  
+  🔗 [IVF](https://medium.com/@Jawabreh0/inverted-file-indexing-ivf-in-faiss-a-comprehensive-guide-c183fe979d20)  
+  🔗 [PQ](https://www.pinecone.io/learn/series/faiss/product-quantization/)  
+  🔗 [IVF-PQ](https://lancedb.github.io/lancedb/concepts/index_ivfpq/)  
+  🔗 [OPQ](https://ieeexplore.ieee.org/abstract/document/6678503/)  
+  🔗 [ScaNN](https://habr.com/ru/articles/591241/)  
+  🔗 [Multi-shard]()  
+
 - **Качество корпуса:** дедупликация (MinHash/SimHash), сегментация длинных документов (sliding window, text splitting).
 
 ## II. Каскад reranking
