@@ -5,19 +5,21 @@
 ---
 
 ## I. Retrieval‑стек
-- **Dense поиск:** Sentence‑Transformers, E5, BGE, DistilUSE; настройка размерности, pooling, L2‑нормализации.  
+- **Dense поиск:** настройка размерности, pooling, L2‑нормализации, Несбалансированные распределения векторов, Asymmetric Search, Embedding Drift.  
 - **Sparse сигнатуры:** BM25, SPLADE, pruning stop‑words, lexical fallback.  
 - **Hybrid fusion:** Reciprocal Rank Fusion (RRF), формула $w_{lex}·BM25 + w_{dense}·\cos$.  
-- **ANN индексация:** IVF‑PQ (`nlist`, `nprobe`, PQ M/бит) и HNSW (`ef`, `M`), ScaNN, multi‑shard.  
+- **ANN индексация:**   
+  🔗 [Multi-shard]()  
   🔗 [HNSW](https://habr.com/ru/companies/vk/articles/338360/)  
   🔗 [IVF](https://medium.com/@Jawabreh0/inverted-file-indexing-ivf-in-faiss-a-comprehensive-guide-c183fe979d20)  
   🔗 [PQ](https://www.pinecone.io/learn/series/faiss/product-quantization/)  
   🔗 [IVF-PQ](https://lancedb.github.io/lancedb/concepts/index_ivfpq/)  
   🔗 [OPQ](https://ieeexplore.ieee.org/abstract/document/6678503/)  
   🔗 [ScaNN](https://habr.com/ru/articles/591241/)  
-  🔗 [Multi-shard]()  
+  🔗 [Tail Latency](https://zilliz.com/ai-faq/why-is-tail-latency-p95p99-often-more-important-than-average-latency-for-evaluating-the-performance-of-a-vector-search-in-userfacing-applications)  
+  🔗 [Metadata Filtering]()  
 
-- **Качество корпуса:** дедупликация (MinHash/SimHash), сегментация длинных документов (sliding window, text splitting).
+- **Качество корпуса:** дедупликация (MinHash/SimHash), сегментация длинных документов (sliding window, text splitting), Очень длинные документы, Малые корпуса.
 
 ## II. Каскад reranking
 - **Late‑interaction** (ColBERT) vs **Cross‑encoder** (bge‑reranker) — trade‑off latency ↔ quality.  
