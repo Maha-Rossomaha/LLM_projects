@@ -5,7 +5,12 @@
 ---
 
 ## I. Retrieval‑стек
-- **Dense поиск:** настройка размерности, pooling, L2‑нормализации, Несбалансированные распределения векторов, Asymmetric Search, Embedding Drift.  
+- **Dense поиск:**   
+  🔗 [Dimension, Pooling and Normalization]()  
+  🔗 [Cross and Bi Encoders]()  
+  🔗 [Vector Imbalance]()  
+  🔗 [Asymmetric Search]()  
+  🔗 [Embedding Drift]()  
 - **Sparse сигнатуры:** BM25, SPLADE, pruning stop‑words, lexical fallback.  
 - **Hybrid fusion:** Reciprocal Rank Fusion (RRF), формула $w_{lex}·BM25 + w_{dense}·\cos$.  
 - **ANN индексация:**   
@@ -19,7 +24,7 @@
   🔗 [Tail Latency](https://zilliz.com/ai-faq/why-is-tail-latency-p95p99-often-more-important-than-average-latency-for-evaluating-the-performance-of-a-vector-search-in-userfacing-applications)  
   🔗 [Metadata Filtering]()  
 
-- **Качество корпуса:** дедупликация (MinHash/SimHash), сегментация длинных документов (sliding window, text splitting), Очень длинные документы, Малые корпуса.
+- **Качество корпуса:** дедупликация (MinHash/SimHash), сегментация длинных документов (sliding window, text splitting), Очень длинные документы, Малые корпуса, Многомодальность.
 
 ## II. Каскад reranking
 - **Late‑interaction** (ColBERT) vs **Cross‑encoder** (bge‑reranker) — trade‑off latency ↔ quality.  
