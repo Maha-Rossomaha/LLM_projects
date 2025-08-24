@@ -19,7 +19,7 @@
   🔗 [Neural Sparse Retrieval](https://qdrant.tech/articles/modern-sparse-neural-retrieval/)  
   🔗 []()  
 
-- **Hybrid fusion:** Reciprocal Rank Fusion (RRF), формула $w_{lex}·BM25 + w_{dense}·\cos$, lexical fallback  
+- **Hybrid fusion:** Score fusion, Reciprocal Rank Fusion (RRF), формула $w_{lex}·BM25 + w_{dense}·\cos$, lexical fallback, проблемы балансировки  
 - **ANN индексация:**   
   🔗 [Multi-shard]()  
   🔗 [HNSW](https://habr.com/ru/companies/vk/articles/338360/)  
