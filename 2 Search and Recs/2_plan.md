@@ -11,7 +11,14 @@
   🔗 [Vector Imbalance]()  
   🔗 [Asymmetric Search]()  
   🔗 [Embedding Drift]()  
-- **Sparse сигнатуры:** BM25, SPLADE, pruning stop‑words, lexical fallback.  
+- **Sparse сигнатуры:** , SPLADE, pruning stop‑words, lexical fallback.  
+  🔗 [BM25](https://habr.com/ru/articles/545634/)  
+  🔗 []()  
+  🔗 []()  
+  🔗 []()  
+  🔗 []()  
+  🔗 []()  
+
 - **Hybrid fusion:** Reciprocal Rank Fusion (RRF), формула $w_{lex}·BM25 + w_{dense}·\cos$.  
 - **ANN индексация:**   
   🔗 [Multi-shard]()  
