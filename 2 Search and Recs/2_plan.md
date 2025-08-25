@@ -11,15 +11,17 @@
   🔗 [Vector Imbalance]()  
   🔗 [Asymmetric Search]()  
   🔗 [Embedding Drift]()  
+
 - **Sparse сигнатуры:**   
   🔗 [Inverted Index]()  
   🔗 [BM25](https://habr.com/ru/articles/545634/)  
   🔗 [SPLADE](https://arxiv.org/abs/2107.05720)  
   🔗 [DocT5Query и Query Expansion]()  
   🔗 [Neural Sparse Retrieval](https://qdrant.tech/articles/modern-sparse-neural-retrieval/)  
-  🔗 []()  
+  🔗 [Data Drift]()  
 
 - **Hybrid fusion:** Score fusion, Reciprocal Rank Fusion (RRF), формула $w_{lex}·BM25 + w_{dense}·\cos$, lexical fallback, проблемы балансировки  
+
 - **ANN индексация:**   
   🔗 [Multi-shard]()  
   🔗 [HNSW](https://habr.com/ru/companies/vk/articles/338360/)  
@@ -31,7 +33,7 @@
   🔗 [Tail Latency](https://zilliz.com/ai-faq/why-is-tail-latency-p95p99-often-more-important-than-average-latency-for-evaluating-the-performance-of-a-vector-search-in-userfacing-applications)  
   🔗 [Metadata Filtering]()  
 
-- **Качество корпуса:** дедупликация (MinHash/SimHash), сегментация длинных документов (sliding window, text splitting), Очень длинные документы, Малые корпуса, Многомодальность.
+- **Качество корпуса:** дедупликация (MinHash/SimHash), сегментация длинных документов (sliding window, text splitting), Очень длинные документы, Малые корпуса, Мультимодальность.
 
 ## II. Каскад reranking
 - **Late‑interaction** (ColBERT) vs **Cross‑encoder** (bge‑reranker) — trade‑off latency ↔ quality.  
