@@ -7,7 +7,7 @@
 ## I. Retrieval‑стек
 - **Dense поиск:**   
   🔗 [Dimension, Pooling and Normalization]()  
-  🔗 [Cross and Bi Encoders]()  
+  🔗 [Cross and Bi Encoders and Twin Towers]()  
   🔗 [Vector Imbalance]()  
   🔗 [Asymmetric Search]()  
   🔗 [Embedding Drift]()  

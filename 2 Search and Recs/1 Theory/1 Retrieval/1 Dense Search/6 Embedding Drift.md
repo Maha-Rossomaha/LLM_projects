@@ -106,10 +106,10 @@ def psi(expected, actual, buckets=10):
     expected_perc = expected_perc / len(expected)
     actual_perc = actual_perc / len(actual)
     psi_val = np.sum(
-      (expected_perc - actual_perc) * np.log(
-         (expected_perc+1e-6)/(actual_perc+1e-6)
-      )
-   )
+        (expected_perc - actual_perc) * np.log(
+          (expected_perc+1e-6)/(actual_perc+1e-6)
+        )
+    )
     return psi_val
 
 old_norms = np.random.normal(1, 0.1, 10000)
