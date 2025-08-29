@@ -8,6 +8,7 @@
 - **Dense поиск:**   
   🔗 [Dimension, Pooling and Normalization]()  
   🔗 [Cross and Bi Encoders and Twin Towers]()  
+  🔗 [Late Interaction]()  
   🔗 [Vector Imbalance]()  
   🔗 [Asymmetric Search]()  
   🔗 [Embedding Drift]()  
