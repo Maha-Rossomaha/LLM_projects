@@ -14,13 +14,13 @@
 - **Documentation**  
   🔗 [Mappings and Analyzers]()  
   🔗 [Индексация/bulk/reindex]()  
-  🔗 []()  
-  🔗 []()  
-  🔗 []()  
-  🔗 []()  
-  🔗 []()  
-  🔗 []()  
-
+  🔗 [Query DSL]()  
+  🔗 [Scoring]()  
+  🔗 [Aggregations]()  
+  🔗 [Security]()  
+  🔗 [Index State Management]()  
+  🔗 [Snapshot & Restore]()  
+  🔗 [Производительность и эксплуатация]()  
 
 ## III. SQL / NoSQL слой
 - **PostgreSQL:** JSONB + GIN/GiST, partition by time, `pgvector` для маленьких корпусов.  
