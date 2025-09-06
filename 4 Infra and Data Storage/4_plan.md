@@ -10,10 +10,17 @@
 - **Операции:** batch / streaming ingestion, metadata‑filtering, background re‑build, compaction.  
 - **Шардирование и реплика:** hash‑id, semantic (k‑means), range; консистентность и merge partial‑top‑k.
 
-## II. Elasticsearch / OpenSearch
-- Кластер: shards × replicas, ILM (Hot‑Warm‑Cold) для экономии.  
-- Анализаторы, `dense_vector`, `script_score`, BM25 ↔ dense fusion.  
-- Режим **hybrid search:** sparse + ANN retrieval → Rank‑Fusion (RRF / weighted sum).
+## II. OpenSearch
+- **Documentation**  
+  🔗 [Mappings and Analyzers]()  
+  🔗 [Индексация/bulk/reindex]()  
+  🔗 []()  
+  🔗 []()  
+  🔗 []()  
+  🔗 []()  
+  🔗 []()  
+  🔗 []()  
+
 
 ## III. SQL / NoSQL слой
 - **PostgreSQL:** JSONB + GIN/GiST, partition by time, `pgvector` для маленьких корпусов.  
