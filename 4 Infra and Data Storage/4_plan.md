@@ -5,7 +5,20 @@
 ---
 
 ## I. Vector Databases
-- **Движки:** FAISS (Flat, IVF, PQ, OPQ, HNSW), pgvector, Qdrant / Milvus / Weaviate, Pinecone, Vespa.  
+- **Qdrant:** FAISS (Flat, IVF, PQ, OPQ, HNSW), pgvector, Qdrant / Milvus / Weaviate, Pinecone, Vespa.  
+  🔗 [Storage and Indexing]()  
+  🔗 [Collections, points and payload]()  
+  🔗 [Configuration and Deploy]()  
+  🔗 [Vector Search]()  
+  🔗 [Filtering and Payload Index]()  
+  🔗 [Hybrid and Sparse]()  
+  🔗 [Indexing Optimizer]()  
+  🔗 [Clusters, Shards and Replicas]()  
+  🔗 [Python client]()  
+  🔗 [RAG]()  
+  🔗 [Monitoring and SLO]()  
+  🔗 [Troubleshooting]()  
+
 - **Выбор индекса:** recall ↔ latency ↔ footprint; правила nlist≈√N, nprobe динамический, OPQ для памяти.  
 - **Операции:** batch / streaming ingestion, metadata‑filtering, background re‑build, compaction.  
 - **Шардирование и реплика:** hash‑id, semantic (k‑means), range; консистентность и merge partial‑top‑k.
