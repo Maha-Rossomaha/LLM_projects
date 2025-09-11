@@ -39,11 +39,10 @@
   🔗 [Tail Latency](https://zilliz.com/ai-faq/why-is-tail-latency-p95p99-often-more-important-than-average-latency-for-evaluating-the-performance-of-a-vector-search-in-userfacing-applications)  
   🔗 [Metadata Filtering]()  
 
-- **Corpus Quality:** дедупликация (MinHash/SimHash), сегментация длинных документов (sliding window, text splitting), Очень длинные документы, Малые корпуса, Мультимодальность.
-  🔗 [Deduplication Cleaning]()  
-  🔗 []()  
-  🔗 []()  
-  🔗 []()  
+- **Corpora Quality:**   
+  🔗 [Deduplication Cleaning (MinHash/SimHash)]()  
+  🔗 [Segmentation Long Docs]()  
+  🔗 [Small Corpora Retrieval]()  
 
 
 ## II. Каскад reranking
