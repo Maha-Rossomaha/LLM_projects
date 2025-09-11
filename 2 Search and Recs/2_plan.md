@@ -5,7 +5,7 @@
 ---
 
 ## I. Retrieval‑стек
-- **Dense поиск:**   
+- **Dense search:**   
   🔗 [Dimension, Pooling and Normalization]()  
   🔗 [Cross and Bi Encoders and Twin Towers]()  
   🔗 [Late Interaction]()  
@@ -13,7 +13,7 @@
   🔗 [Asymmetric Search]()  
   🔗 [Embedding Drift]()  
 
-- **Sparse сигнатуры:**   
+- **Sparse signatures:**   
   🔗 [Inverted Index]()  
   🔗 [BM25](https://habr.com/ru/articles/545634/)  
   🔗 [SPLADE](https://arxiv.org/abs/2107.05720)  
@@ -21,9 +21,14 @@
   🔗 [Neural Sparse Retrieval](https://qdrant.tech/articles/modern-sparse-neural-retrieval/)  
   🔗 [Data Drift]()  
 
-- **Hybrid fusion:** Score fusion, Reciprocal Rank Fusion (RRF), формула $w_{lex}·BM25 + w_{dense}·\cos$, lexical fallback, проблемы балансировки  
+- **Hybrid fusion:**:
+  🔗 [Score fusion]()  
+  🔗 [Reciprocal Rank Fusion (RRF)]()  
+  🔗 [w_{lex}·BM25 + w_{dense}·\cos]()  
+  🔗 [lexical fallback]()  
+  🔗 [проблемы балансировки]()  
 
-- **ANN индексация:**   
+- **ANN indexing:**   
   🔗 [Multi-shard]()  
   🔗 [HNSW](https://habr.com/ru/companies/vk/articles/338360/)  
   🔗 [IVF](https://medium.com/@Jawabreh0/inverted-file-indexing-ivf-in-faiss-a-comprehensive-guide-c183fe979d20)  
@@ -34,7 +39,12 @@
   🔗 [Tail Latency](https://zilliz.com/ai-faq/why-is-tail-latency-p95p99-often-more-important-than-average-latency-for-evaluating-the-performance-of-a-vector-search-in-userfacing-applications)  
   🔗 [Metadata Filtering]()  
 
-- **Качество корпуса:** дедупликация (MinHash/SimHash), сегментация длинных документов (sliding window, text splitting), Очень длинные документы, Малые корпуса, Мультимодальность.
+- **Corpus Quality:** дедупликация (MinHash/SimHash), сегментация длинных документов (sliding window, text splitting), Очень длинные документы, Малые корпуса, Мультимодальность.
+  🔗 [Deduplication Cleaning]()  
+  🔗 []()  
+  🔗 []()  
+  🔗 []()  
+
 
 ## II. Каскад reranking
 - **Late‑interaction** (ColBERT) vs **Cross‑encoder** (bge‑reranker) — trade‑off latency ↔ quality.  
