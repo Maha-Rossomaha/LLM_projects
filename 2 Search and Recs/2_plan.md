@@ -8,7 +8,6 @@
 - **Dense search:**   
   🔗 [Dimension, Pooling and Normalization]()  
   🔗 [Cross and Bi Encoders and Twin Towers]()  
-  🔗 [Late Interaction]()  
   🔗 [Vector Imbalance]()  
   🔗 [Asymmetric Search]()  
   🔗 [Embedding Drift]()  
@@ -49,6 +48,8 @@
 - **Late‑interaction** (ColBERT) vs **Cross‑encoder** (bge‑reranker) — trade‑off latency ↔ quality.  
 - Мульти‑этап: bi‑encoder → ColBERT → cross; динамический $K/M$.  
 - **Фичи для rerank:** dense sim, BM25, позиция, свежесть, user signals.
+  🔗 [Late Interaction]()  
+  
 
 ## III. Learning‑to‑rank
 - **Модели:** LambdaMART, RankNet, ListNet, TF‑Ranking, LightGBM‑ranker.  
