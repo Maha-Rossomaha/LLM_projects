@@ -44,12 +44,13 @@
   🔗 [Small Corpora Retrieval]()  
 
 
-## II. Каскад reranking
-- **Late‑interaction** (ColBERT) vs **Cross‑encoder** (bge‑reranker) — trade‑off latency ↔ quality.  
-- Мульти‑этап: bi‑encoder → ColBERT → cross; динамический $K/M$.  
-- **Фичи для rerank:** dense sim, BM25, позиция, свежесть, user signals.
-  🔗 [Late Interaction]()  
-  
+## II. Reranking Cascade
+  🔗 [Late Interaction and ColBERT]()  
+  🔗 [Cross Encoder Reranker]()  
+  🔗 [Multi Stage Reranker]()  
+  🔗 [Rerank Signals]()  
+  🔗 [Rerank Metrics]()  
+  🔗 [Latency Optimization]()    
 
 ## III. Learning‑to‑rank
 - **Модели:** LambdaMART, RankNet, ListNet, TF‑Ranking, LightGBM‑ranker.  
