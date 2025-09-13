@@ -53,13 +53,15 @@
   🔗 [Latency Optimization]()    
 
 ## III. Learning‑to‑rank
-- **Модели:** LambdaMART, RankNet, ListNet, TF‑Ranking, LightGBM‑ranker.  
-- **Pairwise vs listwise:** когда что.  
-- **On‑line fine‑tune:** soft‑labels из кликов, knowledge distillation из cross‑encoder.  
-- **Distillation:**  
-  – *Hard-label distillation:* ученик учится предсказывать финальный выбор учителя (например, top‑1).  
-  – *Soft-label distillation:* ученик приближает распределение логитов (softmax) учителя.  
-  → Soft‑label distillation чаще даёт лучшие результаты, особенно при многоклассовых и ранжирующих задачах.
+  🔗 [Pointwise, Pairwise and Listwise]()  
+  🔗 [Cross Encoder]()  
+  🔗 [RankNet](https://logic.pdmi.ras.ru/~sergey/teaching/mlhse17/17-ranking.pdf)  
+  🔗 [LambdaRank](https://neerc.ifmo.ru/wiki/index.php?title=%D0%94%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5_%D0%BA_%D1%80%D0%B0%D0%BD%D0%B6%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8E)  
+  🔗 [LambdaMART](https://logic.pdmi.ras.ru/~sergey/teaching/mlhse17/18-mart.pdf)  
+  🔗 [ListNet and ListMLE]()  
+  🔗 [LightGBM and CatBoost Reranker]()  
+  🔗 [Features Inputs]()  
+  🔗 [Distillation and Online Fine-Tuning]()  
 
 ## IV. RAG и generative search
 - Pipeline: retriever → reranker → LLM‑генератор.  
