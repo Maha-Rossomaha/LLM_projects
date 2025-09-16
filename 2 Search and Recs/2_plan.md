@@ -43,7 +43,6 @@
   🔗 [Segmentation Long Docs]()  
   🔗 [Small Corpora Retrieval]()  
 
-
 ## II. Reranking Cascade
   🔗 [Late Interaction and ColBERT]()  
   🔗 [Cross Encoder Reranker]()  
@@ -73,7 +72,6 @@
   - Query planning: разбиение задачи на подзапросы и их последовательное выполнение.
   - Интеграция с reranker’ами и multi-hop RAG.
   - Метрики: groundedness на сессии, cumulative recall@K, доля релевантных уточнений.
-
 
 
 ## V. Online‑feedback и bandits
