@@ -1,4 +1,4 @@
-# Конспект: Conversational retrieval и персонализированный выбор контекста
+# Conversational retrieval 
 
 ## 1. Conversational retrieval: мотивация и отличие от single-turn RAG
 
