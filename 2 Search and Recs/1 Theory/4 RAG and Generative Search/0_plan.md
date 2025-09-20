@@ -1,0 +1,21 @@
+## Roadmap практики
+   - Шаг 1.
+     -  Базовый поискИспользовать BM25 (Elasticsearch или rank_bm25).
+     -  Реализовать простой retriever без персонализации.
+  -  Шаг 2. Dense retrieval
+     -  Подключить sentence-transformers или OpenAI embeddings.
+     -  Использовать FAISS / Qdrant / Milvus для ANN-поиска.
+  -  Шаг 3. Hybrid search
+     -  Комбинация BM25 и dense retrieval (взвешенная сумма или RRF).
+     -  Оценка качества по Recall@K и nDCG.
+  -  Шаг 4. Reranking
+     -  Добавить bi-encoder → late interaction (ColBERT) → cross-encoder.
+     -  Построить каскад reranker’ов.
+  -  Шаг 5. Интеграция с LLM
+     -  Построить RAG-пайплайн end-to-end: retriever + reranker + LLM.
+     -  Настроить prompt templates, цитирование, контроль галлюцинаций.
+  -  Шаг 6. Production-ready
+     -  Ввести мониторинг (latency, Recall@K, groundedness).
+     -  Настроить graceful degradation и fallback.
+     -  Учесть privacy (PII фильтрация, RTBF).
+     -  Обеспечить отказоустойчивость и multi-tenant isolation.
