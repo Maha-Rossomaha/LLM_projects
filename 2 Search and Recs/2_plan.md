@@ -63,16 +63,14 @@
   🔗 [Distillation and Online Fine-Tuning]()  
 
 ## IV. RAG и generative search
-- Pipeline: retriever → reranker → LLM‑генератор.  
-- **Dynamic context selection:** кластеризация top‑K, маржинальная полезность.  
-- Multi‑hop / memory‑augmented RAG; answer re‑ranking.
-- Conversational retrieval:
-  - Multi-turn query refinement (пошаговое уточнение запросов с учётом истории диалога).
-  - Context carry-over — сохранение и использование диалогового контекста для формирования следующего запроса в retriever.
-  - Query planning: разбиение задачи на подзапросы и их последовательное выполнение.
-  - Интеграция с reranker’ами и multi-hop RAG.
-  - Метрики: groundedness на сессии, cumulative recall@K, доля релевантных уточнений.
-
+- 🔗 [RAG Basics]()  
+- 🔗 [Chunking]()  
+- 🔗 [Dynamic Context]()  
+- 🔗 [Conversational RAG]()  
+- 🔗 [Personalized Context]()  
+- 🔗 [Answer Generation]()  
+- 🔗 [Reliability and Security]()  
+- 🔗 [RAG Tools]()  
 
 ## V. Online‑feedback и bandits
 - **Explore‑Exploit:** Thompson Sampling, ε‑greedy, UCB — ротация кандидатов.  
@@ -103,6 +101,7 @@
 - **Offline:** MRR, nDCG@K, Recall@K, MAP; bootstrap CI.  
 - **Online:** CTR, dwell‑time, p50/p95 latency, Δbusiness metric; Sequential / CUPED / Bayesian A/B.  
 - **Fairness metrics:** disparity ratio, fairness@K.
+- **RAG Metrics:** Faithfulness / Groundedness, Answer provenance, Redundancy / Diversity, Session-level метрики (для multi-turn / conversational RAG), Hallucination rate, Latency-aware метрики
 
 ## XI. Дорожная карта компетенций
 
