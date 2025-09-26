@@ -8,6 +8,15 @@
 - **Docker:** многостейджевые Dockerfile, CUDA‑базовые образы, тонкие runtime‑образы (distroless, slim).
 - **docker‑compose:** dev / test окружения, GPU‑override.
 - **Kubernetes + Helm:** GPU scheduling, resource limits, auto‑scaling (HPA / KEDA), blue‑green / canary rollout, secrets + configMaps.
+- **Airflow**  
+  🔗 [Architecture and Entities]()  
+  🔗 [Scheduling]()  
+  🔗 []()  
+  🔗 []()  
+  🔗 []()  
+  🔗 []()  
+  
+- 
 
 ## II. CI/CD и Infrastructure‑as‑Code
 - **CI платформы:** GitHub Actions / GitLab CI / Jenkins / Argo — build → test → scan → push → deploy.
