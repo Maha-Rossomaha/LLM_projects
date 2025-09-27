@@ -14,14 +14,9 @@
   🔗 [ETL-pattern]()  
   🔗 [XCom]()  
   🔗 [Идемпотентность, backfill, окна данных]()  
-  🔗 []()  
-  🔗 []()  
-  🔗 []()  
-  🔗 []()  
-  🔗 []()  
-  🔗 []()  
-  
-- 
+  🔗 [Scaling and Production]()  
+  🔗 [Best Practices]()  
+  🔗 [Moniroting and Observability]()  
 
 ## II. CI/CD и Infrastructure‑as‑Code
 - **CI платформы:** GitHub Actions / GitLab CI / Jenkins / Argo — build → test → scan → push → deploy.
