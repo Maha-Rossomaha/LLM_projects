@@ -10,11 +10,17 @@
 # syntax=docker/dockerfile:1.7
 
 ########## STAGE 1: builder ##########
+# 1. Берём полный образ Python, чтобы можно было собирать зависимости.
+# 2. AS builder — даём имя стадии, чтобы потом к ней обратиться.
 FROM python:3.11-bookworm AS builder
 WORKDIR /src
-# 1) фиксируем зависимости отдельно — для кеша
+# 1) фиксируем зависимости отдельно — для кеша 
+## если исходный код изменился, а зависимости нет, шаг с установкой зависимостей не будет пересобираться.
 COPY requirements.txt ./
 # BuildKit кеш для pip (ускоряет повторные билды)
+## --mount=type=cache,target=/root/.cache/pip — BuildKit cache mount: кэширует содержимое pip, чтобы повторные сборки были быстрее.
+## pip wheel — собирает зависимости в wheels (бинарные пакеты).
+## /wheels — директория с готовыми .whl, которые можно потом установить.
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip install --upgrade pip && \
     pip wheel --wheel-dir=/wheels -r requirements.txt
@@ -24,21 +30,20 @@ COPY . .
 # пример: сборка C-расширений/минимизация/линтеры — всё оставляем тут
 
 ########## STAGE 2: runtime ##########
+# Используем облегчённый образ (slim), без компилятора и лишних библиотек → меньше размер образа.
 FROM python:3.11-slim AS runtime
+# PYTHONDONTWRITEBYTECODE=1 — отключает создание .pyc.
+# PYTHONUNBUFFERED=1 — stdout/stderr сразу пишутся в логи (важно в Docker).
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 WORKDIR /app
 # Копируем только нужное из builder
+## Берём готовые wheels из builder-стадии и устанавливаем их.
+## Таким образом, в runtime-образе нет pip cache, gcc, dev-пакетов → меньше размер и меньше поверхность атаки.
 COPY --from=builder /wheels /wheels
 RUN pip install --no-cache-dir /wheels/*
 COPY app/ ./app/
 ENTRYPOINT ["python", "-m", "app"]
 ```
-
-**Разбор:**
-
-- FROM python:3.11-bookworm AS builder
-
-  WORKDIR /src
 
 **Плюсы:**
 
@@ -93,8 +98,10 @@ BuildKit — новый движок сборки Docker: параллелизм
 
 ## `RUN --mount=type=cache` (горячее кеширование в рантайме сборки)
 
-Позволяет монтировать каталоги как кеш между билдами **без** попадания содержимого в слой образа.
-
+- В контейнер подмонтируется специальный каталог-кэш, который живёт вне слоёв образа.
+- Он сохраняется между билдами и может использоваться повторно.
+- Его содержимое НЕ попадает в финальный слой (то есть не раздувает образ).
+- При следующей сборке, если путь совпадает (target=/root/.cache/pip), BuildKit снова подключит этот кэш.
 ### pip cache
 
 ```Dockerfile
@@ -221,7 +228,7 @@ ENTRYPOINT ["python", "-m", "app"]
 ## Частые ошибки и анти‑паттерны
 
 1. **Один жирный образ без стадий** → огромный размер, медленные доставки. Делай builder/runtime.
-2. `\*\* без \*\*` → случайно утащил кэш/секреты, сломал кеш; используй явные пути.
+2. `COPY . .` без `.dockerignore` → случайно утащил кэш/секреты, сломал кеш; используй явные пути.
 3. **Неиспользование BuildKit** → нет `--mount=cache`, нет секретов, медленнее.
 4. **Секреты в ENV/ARG** → утечка в историю образа. Используй `--mount=type=secret`.
 5. **Сброс кеша из‑за порядка шагов** → перенос `COPY requirements.txt` выше.
@@ -248,15 +255,3 @@ docker buildx build \
 # таргет стадии
 docker build --target builder -t myimg:builder .
 ```
-
----
-
-## Мини‑чек‑лист
-
-- Включён BuildKit; указан `# syntax=docker/dockerfile:1.7`.
-- Стадии: `builder` → `runtime`; строгие `COPY`.
-- Кеш: `RUN --mount=type=cache` для pip/apt.
-- Секреты: `--mount=type=secret` при необходимости.
-- Reproducible: фиксированные версии, локали, без случайных временных артефактов.
-- buildx: multi‑arch и удалённые кеши для CI.
-
