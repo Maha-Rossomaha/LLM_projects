@@ -5,7 +5,12 @@
 ---
 
 ## I. Контейнеризация и оркестрация
-- **Docker:** многостейджевые Dockerfile, CUDA‑базовые образы, тонкие runtime‑образы (distroless, slim).
+- **Docker:**  
+   🔗 [Containers and Images]()  
+   🔗 [Dockerfile]()  
+   🔗 [BuildKit]()  
+   🔗 []()  
+   🔗 []()  
 - **docker‑compose:** dev / test окружения, GPU‑override.
 - **Kubernetes + Helm:** GPU scheduling, resource limits, auto‑scaling (HPA / KEDA), blue‑green / canary rollout, secrets + configMaps.
 - **Airflow**  
