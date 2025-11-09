@@ -42,6 +42,8 @@
 
 ## IV. Поточные и ETL пайплайны
 - **Ingestion:** Kafka / Pulsar → transformer workers → Vector DB.  
+- **Distributed Compute - Spark**
+  - DataFrame API, lazy eval, partitioning/repartition, shuffle, bucketing, broadcast-join, window-функции; чтение/запись Parquet (schema evolution, predicate pushdown, ZSTD/ Snappy).
 - **Orchestrators:** Airflow / Prefect / Dagster — snapshot, incremental upsert, watermark‑based dedup.  
 - **Версионирование:** dual‑write workflow, shadow index, atomic alias‑switch.
 
@@ -54,6 +56,13 @@
 - Pre‑computed ANN индексы, cache warm‑up, int8 quantization.  
 - Adaptive `nprobe` / `efSearch`, early‑abort long postings, async refresh.  
 - Tiered storage: NVMe (Hot) → HDD (Warm) → S3 (Cold snapshots).
+- S3 101 (и MinIO)
+  - Модель S3: bucket/ключ/версии, ACL vs bucket policy, IAM policy для сервис-аккаунтов.
+  - Lifecycle/Glacier: правила переходов, expiration, non-current versions cleanup.
+  - Pre-signed URLs (upload/download) и ограничения по времени/правам.
+  - Multipart upload (минимальный размер части, параллельная загрузка, возобновление).
+  - Server-side encryption: SSE-S3 vs SSE-KMS, object lock/immutability.
+  - MinIO как on-prem аналог (совместимость API) и checklist миграции.
 
 ## VII. Безопасность и compliance
 - Multi‑tenant isolation, namespace ACL, row‑/shard‑level RBAC.  
