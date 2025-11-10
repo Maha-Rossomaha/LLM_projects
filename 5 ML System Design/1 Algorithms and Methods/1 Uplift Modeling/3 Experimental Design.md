@@ -1,5 +1,4 @@
-# 🧪 Uplift Modeling — Дизайн эксперимента для Uplift
-
+# Uplift Modeling — Дизайн эксперимента для Uplift
 
 
 ## 1. RCT vs Observational Uplift
