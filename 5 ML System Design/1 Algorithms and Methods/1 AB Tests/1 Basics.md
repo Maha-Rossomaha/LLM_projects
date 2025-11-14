@@ -98,6 +98,10 @@ print(f"95% CI for (B - A): [{ci_low:.3f}, {ci_high:.3f}]")
 ```
 
 **Если метрика бинарная (например, CR):**
-используйте тест разности пропорций (z-тест). Идея: p1 = x1/n1, p2 = x2/n2, pooled p = (x1+x2)/(n1+n2),
-z = (p2−p1) / sqrt( pooled*(1−pooled)*(1/n1 + 1/n2) ), p-value — из стандартной нормали.
-(В `statsmodels.stats.proportion` есть `proportions_ztest`.)
+используйте тест разности пропорций (z-тест). Идея: 
+$$
+    p_1 = x_1/n_1,\; p2 = x2/n2,\\
+    p_{pooled} = (x_1+x_2)/(n_1+n_2),\\
+    z = (p_2−p_1) / \sqrt{(p_{pooled}*(1−p_{pooled})*(1/n_1 + 1/n_2))},
+$$
+ p-value — из стандартной нормали.
