@@ -292,6 +292,3 @@ print(f"Absolute uplift = {delta_abs:.4f}")
 print(f"Relative uplift = {delta_rel*100:.1f}%")
 print(f"95% CI for Δ_abs: [{ci_low:.4f}, {ci_high:.4f}]")
 ```
-
-В реальных системах вместо простого Wald‑CI для долей часто используют более устойчивые варианты (Wilson/Newcombe), но структура интерпретации остаётся той же: baseline → эффект → CI → бизнес‑смысл.
-
