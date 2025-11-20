@@ -26,7 +26,7 @@ $$
 - **Скалярное произведение:** $q\cdot k = \sum_{i=1}^{64} q_i \cdot k_i$.  
 - **Математическое ожидание:** $E[q\cdot k] = E[\sum q_i\cdot k_i] = \sum E[q_i \cdot k_i]$. 
    - $q_i$ и $k_i$ - независимы и с нулевым средним $\rightarrow$ $E[q_i \cdot k_i] = E[q_i] \cdot E[k_i] = 0\cdot 0 = 0$
-- **Дисперсия:** $Var[q\cdot] = Var[\sum q_i \cdot k_i]$. 
+- **Дисперсия:** $Var[q\cdot k] = Var[\sum q_i \cdot k_i]$. 
    - Так как $q_i$ и $k_i$ независимы $\rightarrow$ $Var[q_i \cdot k_i] = E[(q_i\cdot k_i)^2] - (E[q_i\cdot k_i])^2 = E[q_i^2] \cdot E[k_i^2] - 0$.
    - Так как $Var[x] = E[x^2] - (E[x])^2 = E[x^2] - 0 = E[x2]$, то:
       - $E[q_i^2] = Var[q_i] = 1$
