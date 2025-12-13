@@ -1,4 +1,3 @@
-,,
 # Dense Embeddings
 
 ## Определение

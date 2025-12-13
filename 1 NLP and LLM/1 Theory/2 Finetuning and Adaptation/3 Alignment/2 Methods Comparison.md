@@ -40,10 +40,10 @@ $$
 
 ---
 
-## KTO (Kullback-Leibler Preference Tuning)
+## KTO (Kahneman-Tversky Optimization)
 
 ### Идея:
-Альтернатива DPO, в которой ошибка на плохих ответах $y_l$ penalized экспоненциально сильнее. Это KL-penalized версия DPO с bias в сторону наказания.
+Альтернатива DPO, в которой ошибка на плохих ответах $y_l$ штрафуется экспоненциально сильнее. Это KL-penalized версия DPO с bias в сторону наказания.
 
 ### Формула:
 $$
