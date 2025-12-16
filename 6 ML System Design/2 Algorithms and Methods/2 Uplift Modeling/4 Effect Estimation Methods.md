@@ -461,7 +461,7 @@ $$
 Стандартная оценка:
 
 $$
-\widehat{ATE}*{IPTW}  = \frac{1}{n} \sum*{i=1}^n \left( \frac{W_i Y_i}{\hat e(X_i)} - \frac{(1-W_i) Y_i}{1-\hat e(X_i)} \right).
+\widehat{ATE}_{IPTW}  = \frac{1}{n} \sum_{i=1}^n \left( \frac{W_i Y_i}{\hat e(X_i)} - \frac{(1-W_i) Y_i}{1-\hat e(X_i)} \right).
 $$
 
 Это разность средних исходов в двух «взвешенных» популяциях:
@@ -588,7 +588,7 @@ print("IPTW ATE:", ate_iptw)
 Одна из стандартных формул:
 
 $$
-\widehat{ATE}*{DR} = \frac{1}{n} \sum*{i=1}^n \Bigg[ \big(\hat m_1(X_i) - \hat m_0(X_i)\big)
+\widehat{ATE}_{DR} = \frac{1}{n} \sum_{i=1}^n \Bigg[ \big(\hat m_1(X_i) - \hat m_0(X_i)\big)
 
 * \frac{W_i}{\hat e(X_i)} (Y_i - \hat m_1(X_i))
 
