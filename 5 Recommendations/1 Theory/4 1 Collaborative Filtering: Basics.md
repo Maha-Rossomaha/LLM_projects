@@ -235,7 +235,7 @@ IDF-взвешенный косинус:
 
 $$
 \mathrm{sim}_{\text{IDF}}(i, j) = \frac{
-\sum_{u \in U_{ij}} \lambda_u , r_{ui} r_{uj}
+\sum_{u \in U_{ij}} \lambda_u \, r_{ui} r_{uj}
 }{
 \sqrt{\sum_{u \in U_{ij}} \lambda_u r_{ui}^2}
 \sqrt{\sum_{u \in U_{ij}} \lambda_u r_{uj}^2}
