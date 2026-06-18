@@ -89,6 +89,10 @@
 > - **Stateless vs Stateful:** когда что выбирать, StatefulSet, sticky sessions.
 > - **Транспорты:** stdio, SSE, Streamable HTTP, WebSocket, gRPC — сравнение, плюсы/минусы.
 
+### OpenAI API Format
+📄 [OpenAI API Format](1%20Theory/5%20Backend%20and%20API/1%20OpenAI%20API%20Format.md)
+>— Completions API (`/v1/completions`) vs Chat Completions API (`/v1/chat/completions`), структура запроса и ответа, streaming через SSE, function calling, различия между реализациями (OpenAI, vLLM, TGI, Anthropic).
+
 ---
 
 ## VI. Сетевые основы и Service Mesh (Istio)

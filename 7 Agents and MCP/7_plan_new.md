@@ -61,6 +61,15 @@
   - Сравнение подходов: native function calling vs MCP vs hand-crafted JSON parsing.
   - Schema-driven tool definition: JSON Schema для параметров, ограничения, enum'ы.
 
+- **LangChain для агентов**
+  - LangChain как фреймворк для построения агентов: модуль `langchain.agents`, AgentExecutor, инструменты, памяти.
+  - Цепочки (Chains): LLMChain, SequentialChain, TransformChain — когда хватает линейной логики.
+  - ReAct-агенты в LangChain: zero-shot-react, multi-input, custom tools.
+  - Концепции: Tool, ToolKit, AgentType, AgentExecutor, AgentFinish.
+  - Интеграция с MCP через `langchain-mcp-adapters`.
+  - Связь с RAG-сценариями: [LangChain RAG Search Intro](../1%20NLP%20and%20LLM/1%20Theory/6%20LLM%20in%20Search%20and%20Rec/4%20LangChain%20RAG%20Search%20Intro.md).
+  - Переход к LangGraph для сложных графовых сценариев (см. LangGraph выше).
+
 - **Memory patterns**
   - Short-term: контекст диалога в промпте.
   - Long-term: векторная БД + retrieval по релевантности, summary compression.
