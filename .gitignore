@@ -10,3 +10,5 @@
 1\ Compact\ Theory/
 data/
 rec_venv
+.clinerules/
+.clineignore
