@@ -7,8 +7,22 @@
 
 ## I. Vector Databases
 
-> 📝 Конспектов пока нет. Планируемые темы:
-> - **Qdrant:** FAISS (Flat, IVF, PQ, OPQ, HNSW), pgvector, Milvus, Weaviate, Pinecone, Vespa.
+### Qdrant
+
+📄 [Qdrant Intro](1%20Theory/1%20Vector%20Databases/1%20Qdrant/1%20Qdrant%20Intro.md)  
+📄 [Storage and Indexing](1%20Theory/1%20Vector%20Databases/1%20Qdrant/2%20Storage%20and%20Indexing.md)  
+📄 [Collections, Points and Payload](1%20Theory/1%20Vector%20Databases/1%20Qdrant/3%20Collections,%20points%20and%20payload.md)  
+📄 [Configuration and Deploy](1%20Theory/1%20Vector%20Databases/1%20Qdrant/4%20Configuration%20and%20Deploy.md)  
+📄 [Vector Search](1%20Theory/1%20Vector%20Databases/1%20Qdrant/5%20Vector%20Search.md)  
+📄 [Filtering and Payload Index](1%20Theory/1%20Vector%20Databases/1%20Qdrant/6%20Filtering%20and%20Payload%20Index.md)  
+📄 [Hybrid and Sparse](1%20Theory/1%20Vector%20Databases/1%20Qdrant/7%20Hybrid%20and%20Sparse.md)  
+📄 [Indexing Optimizer](1%20Theory/1%20Vector%20Databases/1%20Qdrant/8%20Indexing%20Optimizer.md)  
+📄 [Clusters, Shards and Replicas](1%20Theory/1%20Vector%20Databases/1%20Qdrant/9%20Clusters,%20Shards%20and%20Replicas.md)  
+📄 [Python Client](1%20Theory/1%20Vector%20Databases/1%20Qdrant/10%20Python%20client.md)  
+📄 [RAG](1%20Theory/1%20Vector%20Databases/1%20Qdrant/11%20RAG.md)  
+📄 [Monitoring and SLO](1%20Theory/1%20Vector%20Databases/1%20Qdrant/12%20Monitoring%20and%20SLO.md)  
+📄 [Troubleshooting](1%20Theory/1%20Vector%20Databases/1%20Qdrant/13%20Troubleshooting.md)
+
 > - Storage and Indexing, Collections/points/payload, Configuration and Deploy, Vector Search, Filtering and Payload Index, Hybrid and Sparse, Indexing Optimizer, Clusters/Shards/Replicas, Python client, RAG, Monitoring and SLO, Troubleshooting.
 > - **Выбор индекса:** recall ↔ latency ↔ footprint; nlist≈√N, nprobe динамический, OPQ для памяти.
 > - **Операции:** batch / streaming ingestion, metadata‑filtering, background re‑build, compaction.
@@ -18,14 +32,14 @@
 
 ## II. OpenSearch
 
-📄 [Mappings and Analyzers](1%20Theory/2%20OpenSearch/1%20Mappings%20and%20Analyzers.md)
-📄 [Indexing Bulk](1%20Theory/2%20OpenSearch/2%20Indexing%20Bulk.md)
-📄 [Query DSL](1%20Theory/2%20OpenSearch/3%20Query%20DSL.md)
-📄 [Scoring](1%20Theory/2%20OpenSearch/4%20Scoring.md)
-📄 [Aggregations](1%20Theory/2%20OpenSearch/5%20Aggregations.md)
-📄 [Security](1%20Theory/2%20OpenSearch/6%20Security.md)
-📄 [Index State Management](1%20Theory/2%20OpenSearch/7%20Index%20State%20Management.md)
-📄 [Snapshots](1%20Theory/2%20OpenSearch/8%20Snapshots.md)
+📄 [Mappings and Analyzers](1%20Theory/2%20OpenSearch/1%20Mappings%20and%20Analyzers.md)  
+📄 [Indexing Bulk](1%20Theory/2%20OpenSearch/2%20Indexing%20Bulk.md)  
+📄 [Query DSL](1%20Theory/2%20OpenSearch/3%20Query%20DSL.md)  
+📄 [Scoring](1%20Theory/2%20OpenSearch/4%20Scoring.md)  
+📄 [Aggregations](1%20Theory/2%20OpenSearch/5%20Aggregations.md)  
+📄 [Security](1%20Theory/2%20OpenSearch/6%20Security.md)  
+📄 [Index State Management](1%20Theory/2%20OpenSearch/7%20Index%20State%20Management.md)  
+📄 [Snapshots](1%20Theory/2%20OpenSearch/8%20Snapshots.md)  
 📄 [Производительность и эксплуатация](1%20Theory/2%20OpenSearch/9%20%D0%9F%D1%80%D0%BE%D0%B8%D0%B7%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D1%8C%20%D0%B8%20%D1%8D%D0%BA%D1%81%D0%BF%D0%BB%D1%83%D0%B0%D1%82%D0%B0%D1%86%D0%B8%D1%8F.md)
 
 ---

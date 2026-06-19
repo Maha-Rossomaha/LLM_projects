@@ -33,7 +33,6 @@
 📄 [Pod, Deployment and Lifecycle](1%20Theory/1%20Containerization%20and%20Orchestration/3%20Kubernetes/2%20Pod,%20Deployment%20and%20Lifecycle.md)  
 📄 [Service, Network and Configuration](1%20Theory/1%20Containerization%20and%20Orchestration/3%20Kubernetes/3%20Service,%20Network%20and%20Configuration.md)  
 📄 [Scheduling, Affinity and Taints](1%20Theory/1%20Containerization%20and%20Orchestration/3%20Kubernetes/4%20Scheduling,%20Affinity%20and%20Taints.md)  
-> ⚠️ Deploy‑паттерны (Canary, Blue‑Green) и StatefulSet/DaemonSet — остаются на будущее.
 
 ### Helm  
 📄 [Helm Basics](1%20Theory/1%20Containerization%20and%20Orchestration/4%20Helm/1%20Helm%20Basics.md)  
@@ -58,18 +57,41 @@
 📄 [Quality Gates](1%20Theory/2%20CI%20CD/4%20Quality%20Gates.md)  
 📄 [Security Scanning](1%20Theory/2%20CI%20CD/5%20Security%20Scanning.md)
 
-> IaC (Terraform/Pulumi) — осознанно вынесен за скобки, конспектов нет.
-
 ---
 
 ## III. Низко‑латентный inference и оптимизация
-> 📝 Конспектов пока нет. Планируемые темы:
-> - **Inference движки:** vLLM, text‑generation‑inference, Triton, DeepSpeed‑MII.
-> - **Оптимизации:** KV‑кэш, FlashAttention‑2, quantization (INT8/4, GPTQ), continuous batching, speculative decoding.
-> - **Скалирование:** Tensor / Pipeline MP, multi‑GPU NCCL, FP8.
-> - **Автоскейл:** FastAPI batch endpoints, concurrency gate, dynamic batch‑size.
-> - **Cost‑control:** GPU spot, heterogeneous fleet, scale‑to‑zero.
-> - **Компиляторы:** torch.compile, TensorRT, ONNX Runtime, OpenVINO.
+
+### Inference движки
+
+📄 [vLLM](1%20Theory/3%20Low-Latency%20Inference%20and%20Optimization/1%20Inference%20Engines/1%20vLLM.md)  
+📄 [Text Generation Inference](1%20Theory/3%20Low-Latency%20Inference%20and%20Optimization/1%20Inference%20Engines/2%20Text%20Generation%20Inference.md)  
+📄 [Triton Inference Server](1%20Theory/3%20Low-Latency%20Inference%20and%20Optimization/1%20Inference%20Engines/3%20Triton%20Inference%20Server.md)  
+📄 [DeepSpeed-MII](1%20Theory/3%20Low-Latency%20Inference%20and%20Optimization/1%20Inference%20Engines/4%20DeepSpeed-MII.md)  
+
+### Inference движки
+
+📄 [KV-cache](1%20Theory/3%20Low-Latency%20Inference%20and%20Optimization/2%20Optimization/1%20KV-cache.md)  
+📄 [Continuous Batching](1%20Theory/3%20Low-Latency%20Inference%20and%20Optimization/2%20Optimization/2%20Continuous%20Batching.md)  
+📄 [Speculative Decoding](1%20Theory/3%20Low-Latency%20Inference%20and%20Optimization/2%20Optimization/3%20Speculative%20Decoding.md)  
+
+### Autoscale
+
+📄 [FastAPI Batch Endpoints](1%20Theory/3%20Low-Latency%20Inference%20and%20Optimization/3%20Autoscale/1%20FastAPI%20Batch%20Endpoints.md)  
+📄 [Concurrency Gate](1%20Theory/3%20Low-Latency%20Inference%20and%20Optimization/3%20Autoscale/2%20Concurrency%20Gate.md)  
+📄 [Dynamic Batch Size](1%20Theory/3%20Low-Latency%20Inference%20and%20Optimization/3%20Autoscale/3%20Dynamic%20Batch%20Size.md)  
+
+### Cost-control
+
+📄 [Spot Instances](1%20Theory/3%20Low-Latency%20Inference%20and%20Optimization/4%20Cost-control/1%20Spot%20Instances.md)  
+📄 [Heterogeneous Fleet](1%20Theory/3%20Low-Latency%20Inference%20and%20Optimization/4%20Cost-control/2%20Heterogeneous%20Fleet.md)  
+📄 [Scale to Zero](1%20Theory/3%20Low-Latency%20Inference%20and%20Optimization/4%20Cost-control/3%20Scale%20to%20Zero.md)  
+
+### Compilers
+
+📄 [Torch Compile](1%20Theory/3%20Low-Latency%20Inference%20and%20Optimization/5%20Compilers/1%20Torch%20Compile.md)  
+📄 [TensorRT](1%20Theory/3%20Low-Latency%20Inference%20and%20Optimization/5%20Compilers/2%20TensorRT.md)  
+📄 [ONNX Runtime](1%20Theory/3%20Low-Latency%20Inference%20and%20Optimization/5%20Compilers/3%20ONNX%20Runtime.md)  
+📄 [OpenVINO](1%20Theory/3%20Low-Latency%20Inference%20and%20Optimization/5%20Compilers/4%20OpenVINO.md)  
 
 ---
 
