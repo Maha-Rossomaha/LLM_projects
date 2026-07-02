@@ -75,12 +75,13 @@ $$
 
 Multi-head — это ансамбль внимания по подпространствам, с learnable redundancy (модель сама обучается понимать, что для нее важно, а что излишне).  
 Механизм многоголового внимания реализуется как объединение $H$ параллельных голов:
+
 $$
-\mathrm{head}_h = \mathrm{Attention}(Q W_h^Q,\;K W_h^K,\;V W_h^V),\quad h=1,\dots,H,
-$$
-$$
+\mathrm{head}_h = \mathrm{Attention}(Q W_h^Q,\;K W_h^K,\;V W_h^V),\quad h=1,\dots,H,\\
+
 \mathrm{MultiHead}(Q,K,V) = \mathrm{Concat}(\mathrm{head}_1,\dots,\mathrm{head}_H)\,W^O,
 $$
+
 где $W_h^Q, W_h^K, W_h^V \in \mathbb{R}^{d_{\mathrm{model}} \times d_k}$ и $W^O \in \mathbb{R}^{H d_k \times d_{\mathrm{model}}}$. 
 
 > Мы делим пространство признаков размерности $d_{model}$ на $h$ голов. Это сделано чтобы сохранить общую размерность на выходе: если бы каждая head имела $d_k=d_{model}$, итоговая concat-голова была бы размерности $h\cdot d_{model}$, и линейная комбинация стала бы неоправданно огромной.
@@ -110,6 +111,7 @@ $$
 ## 5. Cross-Attention (Encoder–Decoder Attention)
 
 В блоке внимания энкодер-декодер запросы формируются из скрытых представлений декодера $X_{dec}$, а ключи и значения — из выходов энкодера $X_{enc}$:
+
 $$
 Q = X_{dec} W^Q,\quad
 K = X_{enc} W^K,\quad
