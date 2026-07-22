@@ -24,7 +24,7 @@ jobs:
       - name: Push current ref to GitLab
         env:
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
-          GITLAB_REPOSITORY: https://gitlab.com/maha_ef/llm_projects.git
+          GITLAB_REPOSITORY: gitlab.com/maha_ef/llm_projects.git
         shell: bash
         run: |
           set -euo pipefail
