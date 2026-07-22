@@ -1,0 +1,48 @@
+name: Sync to GitLab
+
+on:
+  push:
+    branches:
+      - "**"
+    tags:
+      - "**"
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    name: Push changes to GitLab
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push current ref to GitLab
+        env:
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+          GITLAB_REPOSITORY: https://gitlab.com/maha_ef/llm_projects.git
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git remote add gitlab \
+            "https://oauth2:${GITLAB_TOKEN}@${GITLAB_REPOSITORY}"
+
+          if [[ "${GITHUB_REF_TYPE}" == "branch" ]]; then
+            echo "Syncing branch: ${GITHUB_REF_NAME}"
+
+            git push gitlab \
+              "HEAD:refs/heads/${GITHUB_REF_NAME}"
+          elif [[ "${GITHUB_REF_TYPE}" == "tag" ]]; then
+            echo "Syncing tag: ${GITHUB_REF_NAME}"
+
+            git push gitlab \
+              "refs/tags/${GITHUB_REF_NAME}:refs/tags/${GITHUB_REF_NAME}"
+          else
+            echo "Unknown ref type: ${GITHUB_REF_TYPE}"
+            exit 1
+          fi
