@@ -27,6 +27,62 @@
 └── 4 Case Studies/
 ```
 
+## Готовые конспекты
+
+### Core Theory
+
+1. [System Design, Domain Modeling и Data Architecture](1%20Core%20Theory/1%20System%20Design,%20Domain%20Modeling%20and%20Data%20Architecture.md)
+2. [Domain Modeling и границы сущностей](1%20Core%20Theory/2%20Domain%20Modeling%20and%20Entity%20Boundaries.md)
+3. [Identity, Identifiers и Idempotency](1%20Core%20Theory/3%20Identity,%20Identifiers%20and%20Idempotency.md)
+4. [Status Models и State Machines](1%20Core%20Theory/4%20Status%20Models%20and%20State%20Machines.md)
+5. [Versioning, Lifecycle и Immutable Revisions](1%20Core%20Theory/5%20Versioning,%20Lifecycle%20and%20Immutable%20Revisions.md)
+6. [Artifacts, Scope и Manifests](1%20Core%20Theory/6%20Artifacts,%20Scope%20and%20Manifests.md)
+
+### Versioned Document Ingestion Platform
+
+1. [IngestionPackage, SourceFile, вложения и provenance](2%20Applied%20Architectures/1%20Versioned%20Document%20Ingestion%20Platform/1%20Packages,%20Source%20Files%20and%20Provenance.md)
+2. [LogicalDocument и DocumentRevision](2%20Applied%20Architectures/1%20Versioned%20Document%20Ingestion%20Platform/2%20Logical%20Documents%20and%20Revisions.md)
+3. [Карта и план прикладного трека](2%20Applied%20Architectures/1%20Versioned%20Document%20Ingestion%20Platform/README.md)
+
+### Уже зафиксированные ключевые различия
+
+```text
+Domain Model
+≠ Data Architecture
+≠ System Architecture
+```
+
+```text
+IngestionPackage
+≠ SourceFile
+≠ ParsedDocument
+≠ LogicalDocument
+≠ DocumentRevision
+≠ ProcessingAttempt
+≠ Artifact
+```
+
+```text
+entity ID
+≠ checksum
+≠ storage key
+≠ idempotency key
+≠ artifact fingerprint
+```
+
+```text
+attempt status
+≠ processing stage
+≠ publication status
+≠ revision readiness
+≠ document lifecycle
+```
+
+```text
+artifact inventory
+≠ immutable manifest
+```
+
 ### 1 Core Theory
 
 Здесь находятся темы, которые применимы не только к ML:
@@ -110,7 +166,7 @@ ENTITY-123
 - внутренние статусы, если они могут раскрывать процесс;
 - фрагменты рабочего кода без отдельной очистки.
 
-Универсальные термины вроде `IngestionPackage`, `SourceFile`, `ParsedDocument`, `ArtifactStorage`, `ReportRevision`, `Manifest` допустимы, если пример полностью синтетический.
+Универсальные термины вроде `IngestionPackage`, `SourceFile`, `ParsedDocument`, `ArtifactStorage`, `DocumentRevision`, `Manifest` допустимы, если пример полностью синтетический.
 
 ## Как читать раздел
 
